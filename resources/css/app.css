@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Lora&family=Montserrat&display=swap');
+
+@font-face {
+  font-family: 'Helvicta';
+  src: url('../fonts/Helvicta.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+:root {
+  --kopi-main: #805438;      /* Coklat utama - judul, accent, button */
+  --kopi-dark: #5a3927;      /* Coklat tua   - background gradasi bawah, navbar sticky */
+  --kopi-light: #b48a6e;     /* Coklat muda  - hover, accent, gradient */
+  --kopi-bg: #8c7e76;        /* Background utuh: gelap, kalem (bisa adjust ke #9a7652 jika ingin lebih coklat) */
+  --kopi-bg-card: #f4eadf;   /* Background card/kotak putih creamy */
+  --kopi-text: #3e2615;      /* Warna teks utama - gelap lembut, enak dibaca di bg terang */
+  --kopi-white: #fff;        /* Putih murni kalau perlu */
+}
+
+/* Reset dasar agar tampilan konsisten di berbagai browser */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Atur font dasar dan background body */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--kopi-bg);   /* Gunakan variabel agar seluruh/section seragam */
+  color: var(--kopi-text);      /* Teks pakai warna variabel */
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* Link tanpa garis bawah, warna selalu ikut inherit parent atau diatur di komponen */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Heading default */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  color: var(--kopi-main);
+  font-family: 'Playfair Display', serif;
+}
+
+p, li, a {
+  font-family: 'Pacifico', cursive;
+}
+
+/* Elemen gambar responsif */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Kontainer pusat standar */
+.container {
+  max-width: 1120px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+/* Tambahan: warna background card/kotak sebaiknya konsisten */
+.card, .service-card, .timeline-card, .contact-form-box {
+  background: var(--kopi-bg-card);
+  border-radius: 16px;
+  color: var(--kopi-dark);
+}

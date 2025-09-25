@@ -1,0 +1,72 @@
+.footer {
+  background: linear-gradient(to bottom, var(--kopi-dark) 0%, var(--kopi-main) 100%);
+  padding: 48px 16px; /* beri padding samping agar mobile nyaman */
+  border-top: 2px solid var(--kopi-main);
+}
+
+.footer-container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+@media (min-width: 768px) {
+  .footer-container {
+    grid-template-columns: repeat(3, 1fr); /* ubah jadi 3 kolom untuk layout desktop/tablet */
+  }
+}
+
+.footer-column-title {
+  color: var(--kopi-main);
+  font-weight: bold;
+  font-size: 1.125rem;
+  margin-bottom: 16px;
+  font-family: 'Helvicta', sans-serif;
+}
+
+.footer-social {
+  display: flex;
+  gap: 20px;
+  justify-content: flex-start; /* untuk mobile, posisi icon mulai dari kiri */
+}
+
+.footer-social a {
+  color: var(--kopi-gray);
+  transition: color 0.3s;
+  font-size: 22px; /* perbesar icon untuk sentuhan mobile */
+}
+
+.footer-social a:hover {
+  color: var(--kopi-light);
+}
+
+.footer-bottom {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 2px solid var(--kopi-main);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.footer-bottom-text {
+  color: var(--kopi-gray);
+  font-size: 0.875rem;
+  max-width: 100%;
+}
+
+@media (max-width: 767px) {
+  .footer-container {
+    padding: 0 16px; /* tambahkan padding samping untuk mobile */
+  }
+
+  .footer-social {
+    justify-content: center; /* tengah icon sosial di mobile */
+  }
+}

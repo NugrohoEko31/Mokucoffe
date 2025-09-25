@@ -1,0 +1,86 @@
+.services-section {
+  min-height: 100vh;
+  display: flex;  
+  padding: 0 0 0 0; 
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom, var(--kopi-dark) 0%, var(--kopi-main) 100%);
+  color: var(--kopi-white);
+}
+
+.services-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  text-align: center;
+}
+
+.services-header {
+  text-align: center;
+  margin-bottom: 48px; /* dikurangi dari 64px ke 48px untuk mengurangi space bawah */
+}
+
+.services-title {
+  font-size: 2.25rem;
+  font-weight: bold;
+  font-family: 'Helvicta', sans-serif;
+  background: linear-gradient(90deg, var(--kopi-main), var(--kopi-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+}
+
+.services-desc {
+  font-size: 1.25rem;
+  color: var(--kopi-gray);
+  max-width: 768px;
+  margin: 0 auto 32px;
+  font-family: 'Helvicta', sans-serif;
+}
+
+.services-grid {
+  display: grid;
+  gap: 40px;
+  grid-template-columns: 1fr;
+}
+
+.service-card {
+  background: var(--kopi-bg-card);
+  backdrop-filter: blur(4px);
+  border-radius: 16px;
+  padding: 32px;
+  border: 2px solid transparent;
+  transition: border-color 0.5s, box-shadow 0.5s;
+  box-shadow: 0 0 12px var(--kopi-shadow);
+  cursor: default;
+  color: var(--kopi-dark);
+}
+.service-card:hover {
+  border-color: var(--kopi-main);
+  box-shadow: 0 0 24px var(--kopi-main);
+}
+
+.service-icon {
+  margin-bottom: 24px;
+  width: 40px;
+  height: 40px;
+  color: var(--kopi-main);
+}
+
+.service-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+  font-family: 'Helvicta', sans-serif;
+  color: var(--kopi-main);
+}
+
+.service-description {
+  color: var(--kopi-dark);
+}
+
+@media (min-width: 768px) {
+  .services-grid { grid-template-columns: repeat(3, 1fr); }
+}
+

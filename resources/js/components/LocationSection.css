@@ -1,0 +1,145 @@
+.location-section {
+  padding: 80px 0;
+  text-align: center;
+  background: linear-gradient(to bottom, var(--kopi-dark) 0%, var(--kopi-main) 100%);
+  color: var(--kopi-white);
+}
+
+.location-container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.location-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  font-family: 'Helvicta', sans-serif;
+  margin-bottom: 16px;
+  background: linear-gradient(90deg, var(--kopi-main), var(--kopi-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.location-desc {
+  font-size: 1.125rem;
+  color: var(--kopi-gray);
+  max-width: 768px;
+  margin: 0 auto 48px;
+  line-height: 1.5;
+}
+
+.location-content-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.location-map-card {
+  width: 420px;
+  height: 420px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 0 20px var(--kopi-shadow);
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.location-map {
+  width: 100%;
+  height: 100%;
+  min-width: 260px;
+  min-height: 260px;
+  border-radius: 24px;
+}
+
+.location-info-column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 350px;
+  text-align: left;
+}
+
+.location-info-title {
+  margin-bottom: 8px; /* memberi jarak bawah judul */
+}
+
+.location-info-text {
+  margin-top: 0;
+  margin-bottom: 24px; /* memperbesar jarak bawah untuk membuat teks alamat naik */
+  line-height: 1.4;
+  font-size: 1rem;
+  color: var(--kopi-gray);
+}
+
+.location-app-row {
+  display: flex;
+  gap: 24px;
+}
+
+.location-address {
+  padding: 24px 0;
+  background: var(--kopi-dark);
+}
+
+.location-address-text {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 16px;
+  color: var(--kopi-main);
+  font-family: 'Helvicta', sans-serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+  text-align: center;
+}
+
+
+.location-app-link {
+  display: inline-block;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.location-app-link:hover {
+  transform: scale(1.1);
+}
+
+.app-logo {
+  width: 180px;
+  height: auto;
+  display: block;
+}
+
+.app-btn-text {
+  color: var(--kopi-main);
+  font-family: 'Helvicta', sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+@media (max-width: 768px) {
+  .location-map-card {
+    width: 100%; /* Lebar penuh container */
+    max-width: 320px; /* Maksimal lebar peta di mobile */
+    height: 320px; /* Sesuaikan tinggi peta */
+  }
+
+  .location-map {
+    min-width: 100% !important; /* peta mengikuti lebar parent */
+    min-height: 320px !important; /* tinggi peta */
+  }
+}
+
+
+@media (max-width: 768px) {
+  .app-btn-text {
+    font-size: 0.97rem;
+  }
+}

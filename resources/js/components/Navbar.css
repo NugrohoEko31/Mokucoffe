@@ -1,0 +1,161 @@
+/* NAVBAR SECTION */
+.navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 2000;
+  transition: all 0.5s ease;
+  padding: 12px 0;
+  background-color: transparent;
+}
+
+/* Navbar sticky saat di-scroll */
+.navbar.scrolled {
+  background-color: var(--kopi-dark);
+  backdrop-filter: blur(8px);
+  padding: 8px 0;
+}
+
+/* Container navigasi */
+.nav-container {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  position: relative;
+}
+
+/* Container kiri: logo dan teks */
+.nav-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-left: 0;
+  padding-left: 8px;
+}
+
+/* Logo ukuran default PC */
+.logo {
+  height: 70px;
+  width: 70px;
+  margin-right: 4px;
+  object-fit: contain;
+}
+
+/* Logo text default PC */
+.logo-text {
+  color: var(--kopi-main);
+  font-weight: bold;
+  font-size: 2rem;
+  font-family: 'Playfair Display', serif;
+  background: linear-gradient(90deg, var(--kopi-main), var(--kopi-light) 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+}
+
+/* Container kanan: nav links default desktop tampil */
+.nav-links {
+  display: inline-flex;
+  gap: 24px;
+  justify-content: flex-end;
+  margin-right: 8px;
+  ;
+}
+
+/* Link navbar */
+.nav-link {
+  color: whitesmoke;
+  padding: 8px 12px;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: 'Helvicta', sans-serif;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.nav-link:hover {
+  color: var(--kopi-light);
+}
+
+/* Tombol menu mobile default sembunyi di desktop */
+.mobile-menu-button {
+  background: transparent;
+  border: none;
+  color: var(--kopi-main);
+  cursor: pointer;
+  display: none; /* default sembunyi di desktop */
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 28px;
+  z-index: 120;
+  position: relative;
+}
+
+/* Menu mobile dropdown default sembunyi */
+.mobile-menu {
+  background-color: var(--kopi-main);
+  position: absolute;
+  top: 60px;
+  right: 8px;
+  width: 170px;
+  border-radius: 10px;
+  display: none;
+  flex-direction: column;
+  box-shadow: 0 4px 20px 4px rgba(128,84,56,0.15);
+  z-index: 110;
+  padding: 10px 0;
+  animation: fadeInMenu 0.2s;
+}
+
+@keyframes fadeInMenu {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.mobile-menu a {
+  padding: 14px 22px;
+  color: var(--kopi-light);
+  text-decoration: none;
+  font-family: 'Helvicta', sans-serif;
+  font-weight: 600;
+  text-align: left;
+  transition: background-color 0.3s, color 0.3s;
+}
+.mobile-menu a:hover {
+  background: var(--kopi-light);
+  color: var(--kopi-white);
+}
+
+/* MOBILE STYLES */
+@media (max-width: 767px) {
+  .logo {
+    height: 60px;
+    width: 60px;
+    margin-right: 0px;
+    object-fit: contain;
+  }
+  .logo-text {
+    font-size: 1.6rem;
+  }
+
+  /* Sembunyikan nav-links di mobile */
+  .nav-links {
+    display: none !important;
+  }
+
+  /* Tampilkan tombol menu hamburger di mobile */
+  .mobile-menu-button {
+    display: inline-flex !important;
+  }
+
+  /* Dipakai juga untuk tampilkan menu mobile dropdown */
+  .mobile-menu.open {
+    display: flex !important;
+  }
+}

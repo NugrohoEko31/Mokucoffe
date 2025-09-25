@@ -1,0 +1,155 @@
+/* HERO SECTION */
+.hero-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  height: 100vh;
+  padding: 0 16px;
+  color: var(--kopi-dark);
+  background: var(--kopi-dark);
+}
+
+/* Dot latar belakang: nuansa kopi */
+.hero-background-dot {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(30px);
+  animation: float 6s ease-in-out infinite;
+  opacity: 0.18;
+  z-index: 0;
+}
+.hero-background-dot1 {
+  top: 25%;
+  left: 25%;
+  width: 80px;
+  height: 80px;
+  background: var(--kopi-main);
+  animation-delay: 0s;
+  opacity: 0.14;
+}
+.hero-background-dot2 {
+  top: 66.6667%;
+  right: 33.3333%;
+  width: 96px;
+  height: 96px;
+  background: var(--kopi-dark);
+  animation-delay: 1s;
+  opacity: 0.10;
+}
+.hero-background-dot3 {
+  bottom: 25%;
+  right: 25%;
+  width: 64px;
+  height: 64px;
+  background: var(--kopi-light);
+  animation-delay: 2s;
+  opacity: 0.12;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 64rem;
+  padding: 0 12px;
+}
+
+.hero-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  font-family: 'Helvicta', sans-serif;
+  background: linear-gradient(90deg, var(--kopi-main), var(--kopi-light));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin-bottom: 32px;
+  color: var(--kopi-light);
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+}
+
+.button-primary {
+  font-family: 'Helvicta', sans-serif;
+  padding: 12px 32px;
+  background: linear-gradient(90deg, var(--kopi-main), var(--kopi-light));
+  color: var(--kopi-white);
+  font-weight: 500;
+  border-radius: 9999px;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 10px 15px -3px var(--kopi-shadow);
+  transition: opacity 0.2s, color 0.2s, background 0.2s;
+  text-decoration: none;
+  border: none;
+}
+.button-primary:hover {
+  font-family: 'Helvicta', sans-serif;
+  opacity: 0.93;
+  color: var(--kopi-main);
+  background: var(--kopi-white);
+  outline: 1px solid var(--kopi-main);
+}
+
+.button-secondary {
+  padding: 12px 32px;
+  background: transparent;
+  border: 2px solid var(--kopi-main);
+  color: var(--kopi-main);
+  font-weight: 500;
+  border-radius: 9999px;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.2s, color 0.2s;
+  text-decoration: none;
+}
+.button-secondary:hover {
+  background: var(--kopi-main);
+  color: var(--kopi-white);
+}
+
+.scroll-indicator {
+  color: var(--kopi-light);
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: bounce 2s infinite;
+}
+.scroll-indicator svg {
+  width: 32px;
+  height: 32px;
+  color: var(--kopi-light);
+  cursor: pointer;
+}
+.scroll-indicator svg:hover {
+  color: white;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-12px);}
+}
+
+
+@media (min-width: 768px) {
+  .buttons { flex-direction: row; }
+}
+
+
