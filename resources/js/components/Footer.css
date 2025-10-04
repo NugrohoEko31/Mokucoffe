@@ -1,5 +1,5 @@
 .footer {
-  background: linear-gradient(to bottom, var(--kopi-dark) 0%, var(--kopi-main) 100%);
+  background: var(--kopi-dark);
   padding: 48px 16px; /* beri padding samping agar mobile nyaman */
   border-top: 2px solid var(--kopi-main);
 }
@@ -24,7 +24,7 @@
   font-weight: bold;
   font-size: 1.125rem;
   margin-bottom: 16px;
-  font-family: 'Helvicta', sans-serif;
+  font-family: 'Helvetica', sans-serif;
 }
 
 .footer-social {

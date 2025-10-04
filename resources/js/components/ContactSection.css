@@ -19,7 +19,7 @@
   font-size: 2.25rem;
   font-weight: bold;
   margin-bottom: 16px;
-  font-family: 'Helvicta', sans-serif;
+  font-family: 'Helvetica', sans-serif;
   background: linear-gradient(90deg, var(--kopi-main), var(--kopi-light));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -70,7 +70,7 @@
   font-weight: bold;
   margin-bottom: 4px;
   color: var(--kopi-main);
-  font-family: 'Helvicta', sans-serif;
+  font-family: 'Helvetica', sans-serif;
 }
 
 .contact-info-data {
@@ -79,7 +79,7 @@
 
 .social-links {
   padding-top: 24px;
-  font-family: 'Helvicta', sans-serif;
+  font-family: 'Helvetica', sans-serif;
 }
 
 .social-links-title {
@@ -92,7 +92,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-family: 'Helvicta', sans-serif;
+  font-family: 'Helvetica', sans-serif;
 }
 
 .social-links-list {
@@ -132,7 +132,7 @@
   font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 24px;
-  font-family: 'Helvicta', sans-serif;
+  font-family: 'Helvetica', sans-serif;
 }
 
 .success-message {
@@ -148,7 +148,7 @@
   display: block;
   color: var(--kopi-main);
   margin-bottom: 8px;
-  font-family: 'Helvicta', sans-serif;
+  font-family: 'Helvetica', sans-serif;
 }
 
 .contact-form-input,
@@ -181,7 +181,7 @@
   font-size: 1.1rem;
   cursor: pointer;
   transition: opacity 0.15s, box-shadow 0.2s, color 0.2s, background 0.2s;
-  font-family: 'Helvicta', sans-serif;
+  font-family: 'Helvetica', sans-serif;
 }
 .contact-form-button:hover {
   opacity: 0.96;

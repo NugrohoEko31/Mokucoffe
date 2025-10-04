@@ -22,9 +22,9 @@ const Footer = () => {
         <div className="footer-column">
           <h3 className="footer-column-title">Kunjungi Media Sosial Kami</h3>
           <div className="footer-social-row">
-            <a href="https://www.instagram.com/kedaikopi.moku/" aria-label="Instagram" className="footer-social-link"><i className="fab fa-instagram"></i></a>
-            <a href="#" aria-label="Facebook" className="footer-social-link"><i className="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="TikTok" className="footer-social-link"><i className="fab fa-tiktok"></i></a>
+            <a href="https://www.instagram.com/kedaikopi.moku/" aria-label="Instagram" className="footer-social-link" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook" className="footer-social-link"><i className="fab fa-facebook-f" target="_blank" rel="noopener noreferrer"></i></a>
+            <a href="#" aria-label="TikTok" className="footer-social-link"><i className="fab fa-tiktok" target="_blank" rel="noopener noreferrer"></i></a>
           </div>
         </div>
       </div>

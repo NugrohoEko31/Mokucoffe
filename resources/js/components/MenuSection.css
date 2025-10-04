@@ -2,7 +2,7 @@
   min-height: 100vh;
   padding: 80px 0;
   text-align: center;
-  background: linear-gradient(to bottom, var(--kopi-dark) 0%, var(--kopi-main) 100%);
+  background: linear-gradient(to bottom, var(--kopi-main) 0%, var(--kopi-dark) 100%);
   color: var(--kopi-white);
 }
 
@@ -16,7 +16,7 @@
   font-size: 3.6rem;
   font-weight: 700;
   margin-bottom: 16px;
-  font-family: 'Helvicta', sans-serif;
+  font-family: 'Helvetica', sans-serif;
   background: linear-gradient(90deg, var(--kopi-main), var(--kopi-light) 80%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -62,7 +62,7 @@
 .menu-item-title {
   font-size: 1.25rem;
   font-weight: 600;
-  font-family: 'Helvicta', sans-serif;
+  font-family: 'Helvetica', sans-serif;
   color: var(--kopi-main);
   margin-bottom: 8px;
 }
@@ -72,7 +72,7 @@
   color: var(--kopi-light);
   text-align: center;
   max-width: 100%;
-  font-family: 'Helvicta', sans-serif;
+  font-family: 'Helvetica', sans-serif;
 }
 
 @media (max-width: 768px) {

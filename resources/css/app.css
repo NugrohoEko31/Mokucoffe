@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Lora&family=Montserrat&display=swap');
 
 @font-face {
-  font-family: 'Helvicta';
-  src: url('../fonts/Helvicta.ttf') format('truetype');
+  font-family: 'Helvetica';
+  src: url('/fonts/Helvetica.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }

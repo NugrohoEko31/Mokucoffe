@@ -23,7 +23,7 @@
 .services-title {
   font-size: 2.25rem;
   font-weight: bold;
-  font-family: 'Helvicta', sans-serif;
+  font-family: 'Helvetica', sans-serif;
   background: linear-gradient(90deg, var(--kopi-main), var(--kopi-light));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -36,7 +36,7 @@
   color: var(--kopi-gray);
   max-width: 768px;
   margin: 0 auto 32px;
-  font-family: 'Helvicta', sans-serif;
+  font-family: 'Helvetica', sans-serif;
 }
 
 .services-grid {
@@ -72,7 +72,7 @@
   font-size: 1.25rem;
   font-weight: bold;
   margin-bottom: 12px;
-  font-family: 'Helvicta', sans-serif;
+  font-family: 'Helvetica', sans-serif;
   color: var(--kopi-main);
 }
 

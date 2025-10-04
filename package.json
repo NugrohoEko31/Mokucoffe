@@ -15,10 +15,10 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^7.0.1",
         "@inertiajs/progress": "^0.2.7",
-        "@inertiajs/react": "^2.1.6",
+        "@inertiajs/react": "^2.2.6",
         "leaflet": "^1.9.4",
-        "react": "^19.1.1",
-        "react-dom": "^19.1.1",
+        "react": "^19.2.0",
+        "react-dom": "^19.2.0",
         "react-leaflet": "^5.0.0"
     }
 }

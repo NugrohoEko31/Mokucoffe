@@ -3,14 +3,20 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Moku Coffe</title>
-    <link rel="icon" href="{{ asset('images/LOGOMOKU.png') }}" type="image/png">
-    <link rel="shortcut icon" href="{{ asset('images/LOGOMOKU.png') }}" type="image/png">
-    <link rel="apple-touch-icon" href="{{ asset('images/LOGOMOKU.png') }}">
-    @vite(['resources/js/app.jsx'])
+
+    <title inertia>{{ config('app.name', 'MokuCoffe') }}</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+
+    <!-- Scripts -->
+    @routes
+    @viteReactRefresh
+    @vite(['resources/css/app.css', 'resources/js/app.jsx'])
     @inertiaHead
 </head>
-<body>
+<body class="font-sans antialiased">
     @inertia
 </body>
 </html>

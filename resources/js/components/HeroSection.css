@@ -64,7 +64,7 @@
   font-size: 2.25rem;
   font-weight: 700;
   margin-bottom: 24px;
-  font-family: 'Helvicta', sans-serif;
+  font-family: 'Helvetica', sans-serif;
   background: linear-gradient(90deg, var(--kopi-main), var(--kopi-light));
   -webkit-background-clip: text;
   background-clip: text;
@@ -86,7 +86,7 @@
 }
 
 .button-primary {
-  font-family: 'Helvicta', sans-serif;
+  font-family: 'Helvetica', sans-serif;
   padding: 12px 32px;
   background: linear-gradient(90deg, var(--kopi-main), var(--kopi-light));
   color: var(--kopi-white);
@@ -100,7 +100,7 @@
   border: none;
 }
 .button-primary:hover {
-  font-family: 'Helvicta', sans-serif;
+  font-family: 'Helvetica', sans-serif;
   opacity: 0.93;
   color: var(--kopi-main);
   background: var(--kopi-white);
