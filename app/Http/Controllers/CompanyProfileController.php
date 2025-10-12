@@ -3,21 +3,29 @@
 namespace App\Http\Controllers;
 
 use Inertia\Inertia;
+use App\Models\Menu;
 
 class CompanyProfileController extends Controller
 {
     public function home()
     {
-        return Inertia::render('Home');
+        $menus = Menu::all();
+        return Inertia::render('Home', [
+            'menuItems' => $menus,
+        ]);
     }
 
     public function menu()
     {
-        return Inertia::render('Menu');
+    $menus = Menu::all();
+    
+    return Inertia::render('MenuPage', [ 'menuItems' => $menus->toArray() ]);
+
     }
 
     public function location()
     {
         return Inertia::render('Location');
     }
+    
 }

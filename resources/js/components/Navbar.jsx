@@ -23,8 +23,7 @@ const Navbar = () => {
             <a href="#home" className="nav-link">HOME</a>
             <a href="#services" className="nav-link">SERVICES</a>
             <a href="#menu" className="nav-link">MENU</a>
-            <a href="#portfolio" className="nav-link">LOCATION</a>
-            <a href="#contact" className="nav-link">CONTACT</a>
+            <a href="#location" className="nav-link">LOCATION</a>
         </div>
         <button
             className="mobile-menu-button"
@@ -44,8 +43,7 @@ const Navbar = () => {
             <a href="#home" onClick={() => setMobileMenuOpen(false)}>HOME</a>
             <a href="#services" onClick={() => setMobileMenuOpen(false)}>SERVICES</a>
             <a href="#menu" onClick={() => setMobileMenuOpen(false)}>MENU</a>
-            <a href="#portfolio" onClick={() => setMobileMenuOpen(false)}>LOCATION</a>
-            <a href="#contact" onClick={() => setMobileMenuOpen(false)}>CONTACT</a>
+            <a href="#location" onClick={() => setMobileMenuOpen(false)}>LOCATION</a>
         </div>
         )}
     </nav>

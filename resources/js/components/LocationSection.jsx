@@ -12,7 +12,7 @@ const LocationSection = () => {
   const grab = "https://www.grab.com/id/food/";
 
   return (
-    <section className="location-section">
+    <section id="location" className="location-section">
       <div className="location-container">
         <h2 className="location-title">OUR LOCATION</h2>
         <p className="location-desc"></p>

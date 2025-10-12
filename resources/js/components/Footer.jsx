@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="footer-column">
           <h3 className="footer-column-title">Jam Buka</h3>
           <div className="footer-col-text">
-            <div>Senin  Minggu: 16.00  23.00</div>
+            <div>Senin - Minggu: 16.00  23.00</div>
           </div>
         </div>
         <div className="footer-column">

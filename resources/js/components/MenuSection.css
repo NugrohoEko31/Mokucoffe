@@ -12,8 +12,9 @@
   padding: 0 16px;
 }
 
+/* Header tetap */
 .menu-header-title {
-  font-size: 3.6rem;
+  font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 16px;
   font-family: 'Helvetica', sans-serif;
@@ -22,82 +23,155 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-
 .menu-header-desc {
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   color: var(--kopi-gray);
+  font-family: 'Helvetica', sans-serif;
   max-width: 768px;
   margin: 0 auto 48px;
   line-height: 1.5;
 }
 
-/* Menu cards container */
+/* Grid Container */
 .menu-list {
-  display: flex;
-  grid-template-columns: repeat(4, 2fr);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 32px;
+  justify-items: center;
+  padding-bottom: 32px;
 }
 
-/* Card menu item */
+/* Card style */
 .menu-item {
-  background: var(--kopi-bg-card);
-  border-radius: 16px;
-  padding: 18px 18px 24px 18px;
-  width: 240px;
-  text-align: center;
-  box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+  position: relative;
+  background: var(--kopi-bg-card, #fff2e1);
+  border-radius: 20px;
+  border: 2px solid #E8C77A;
+  width: 200px;
+  height: 220px; /* Proporsional */
+  box-shadow: 0 6px 20px rgb(0 0 0 / 10%);
+  overflow: hidden;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  transition: border 0.18s, box-shadow 0.18s, transform 0.18s;
+}
+
+.menu-item:hover {
+  transform: translateY(-6px) scale(1.04);
+  box-shadow: 0 8px 36px rgb(50 38 19 / 16%);
+  border: 2.5px solid var(--kopi-main, #af8c52);
+  z-index: 2;
+}
+
+.menu-image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .menu-photo {
   width: 100%;
-  height: 150px;
+  height: 100%;
   object-fit: cover;
-  border-radius: 12px;
-  margin-bottom: 16px;
+  border-radius: 14px;
+  transition: filter 0.19s;
 }
 
+/* Overlay tetap */
+.menu-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(46,30,12, 0.87);
+  color: var(--kopi-white);
+  font-family: 'Helvetica', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s;
+  border-radius: 20px;
+}
+.menu-item:hover .menu-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+.menu-item:hover .menu-photo {
+  filter: blur(1.5px) brightness(0.7);
+}
+
+/* Text style di overlay */
 .menu-item-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  font-family: 'Helvetica', sans-serif;
-  color: var(--kopi-main);
+  font-size: 1.14rem;
+  font-weight: 700;
   margin-bottom: 8px;
+  margin-top: 0;
 }
-
 .menu-item-desc {
-  font-size: 0.95rem;
-  color: var(--kopi-light);
-  text-align: center;
-  max-width: 100%;
-  font-family: 'Helvetica', sans-serif;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+.menu-item-price {
+  font-size: 1.1rem;
+  color: #E8C77A;
 }
 
-@media (max-width: 768px) {
+/* Responsive: mobile grid 2 kolom */
+@media (max-width: 900px) {
+  .menu-section {
+    padding: 36px 0 18px 0;
+  }
+  .menu-container {
+    max-width: 98vw;
+    padding: 0 6px;
+  }
+  .menu-header-title {
+    font-size: 2.1rem;
+  }
+  .menu-header-desc {
+    font-size: 1rem;
+    margin-bottom: 13px;
+  }
   .menu-list {
-    display: flex;
-    gap: 18px;
-    overflow-x: auto;
-    padding-bottom: 12px;
-    scrollbar-width: thin;
-    scrollbar-color: var(--kopi-main) var(--kopi-dark);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    padding-bottom: 8px;
   }
   .menu-item {
-    min-width: 80vw;
-    max-width: 90vw;
-    flex: 0 0 auto;
+    width: 44vw;
+    max-width: 170px;
+    height: 130px;
+    border-radius: 13px;
+  }
+  .menu-image-container {
+    border-radius: 13px;
+    width: 100%;
+    height: 100%;
+  }
+  .menu-photo {
+    border-radius: 11px;
+  }
+  .menu-overlay {
+    border-radius: 13px;
+    font-size: 12px;
+    padding: 4px 0;
   }
 }
 
-/* Untuk tampilan scrollbar di browser berbasis Webkit (Chrome, Safari) */
+/* Scrollbar style (optional) */
 .menu-list::-webkit-scrollbar {
   height: 8px;
 }
 .menu-list::-webkit-scrollbar-thumb {
   background: var(--kopi-main);
-  border-radius: 4px;
+  border-radius: 5px;
 }
 .menu-list::-webkit-scrollbar-track {
   background: var(--kopi-dark);

@@ -27,6 +27,20 @@
   font-family: 'Helvetica', sans-serif;
 }
 
+.footer-col-text {
+  color: var(--kopi-light);
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 16px;
+  font-family: 'Helvetica', sans-serif;
+}
+
+.footer-social-row {
+  color: var(--kopi-light);
+  transition: color 0.3s;
+  font-size: 22px; /* perbesar icon untuk sentuhan mobile */
+}
+
 .footer-social {
   display: flex;
   gap: 20px;
@@ -34,7 +48,7 @@
 }
 
 .footer-social a {
-  color: var(--kopi-gray);
+  color: var(--kopi-light);
   transition: color 0.3s;
   font-size: 22px; /* perbesar icon untuk sentuhan mobile */
 }

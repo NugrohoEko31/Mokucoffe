@@ -10,7 +10,7 @@ class AdminController extends Controller
     // Tampilkan halaman dashboard admin
     public function dashboard()
     {
-        return Inertia::render('Dashboard', [
+        return Inertia::render('Admin/Dashboard', [
             'title' => 'Dashboard Admin'
         ]);
     }

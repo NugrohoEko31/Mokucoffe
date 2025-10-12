@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Menu;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Storage;
 
 class MenuController extends Controller
 {
@@ -14,7 +15,7 @@ class MenuController extends Controller
     {
         $menus = Menu::all();
         return Inertia::render('Admin/Menus/Index', [
-            'menuItems' => $menus
+            'menuItems' => $menus ?? []
         ]);
     }
 
@@ -62,7 +63,13 @@ class MenuController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('menus', 'public');
+        if ($menu->image) {
+            Storage::disk('public')->delete($menu->image);
+        }
+        $validated['image'] = $request->file('image')->store('menus', 'public');
+        } else {
+            // Jangan isi $validated['image'], biarkan value lama tetap
+            unset($validated['image']); // Penting: jangan kirim image:null!
         }
 
         $menu->update($validated);
@@ -73,7 +80,11 @@ class MenuController extends Controller
     // Hapus menu
     public function destroy(Menu $menu)
     {
+        // Hapus gambar di storage jika ada
+        if ($menu->image) {
+            Storage::disk('public')->delete($menu->image);
+        }
         $menu->delete();
-        return redirect()->route('admin.menus.index')->with('success', 'Menu berhasil dihapus.');
+        return redirect()->route('admin.menus.index', [], 303)->with('success', 'Menu berhasil dihapus.');
     }
 }
