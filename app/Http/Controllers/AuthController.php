@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -11,29 +12,6 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function register(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string|max:50',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
-        ]);
-
-
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-
-
-        return response()->json([
-            'message' => 'User berhasil didaftarkan',
-            'user' => $user,
-        ], 201);
-    }
-
-
     public function login(Request $request)
     {
         $request->validate([
@@ -41,19 +19,18 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-
         $user = User::where('email', $request->email)->first();
 
-
         if (!$user || !Hash::check($request->password, $user->password)) {
-            return response()->json([
-                'message' => 'Email atau password salah',
-            ], 401);
+            return Inertia::render('Admin/LoginPage', [
+                'errors' => ['message' => 'Email atau password salah'],
+                'email' => $request->email
+            ]);
         }
 
         Auth::login($user);
 
-        return redirect()->intended('/admin/dashboard');
+        return redirect()->intended('/admin/menu');
         
     }
 

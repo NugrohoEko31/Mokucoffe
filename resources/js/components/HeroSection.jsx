@@ -1,32 +1,77 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './HeroSection.css';
-import Moku from '../assets/Moku.jpg';
+import Moku from '../assets/welcome.png';
+import Slide2 from '../assets/visimisi.png';
+import Slide3 from '../assets/tentangkami.png';
+
+const slides = [
+  { image: Moku },
+  { image: Slide2 },
+  { image: Slide3 },
+];
 
 const HeroSection = () => {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex(current => (current + 1) % slides.length);
+    }, 3800);
+    return () => clearInterval(timer);
+  }, []);
+
+  const handleDotClick = (i) => {
+    setIndex(i); // set slide ke i sesuai klik
+  };
+
   return (
-    <section id="home" className="hero-section">
-      <div>
-        <div className="hero-background-dot hero-background-dot1"></div>
-        <div className="hero-background-dot hero-background-dot2"></div>
-        <div className="hero-background-dot hero-background-dot3"></div>
+    <section className="hero-section">
+      <div className="hero-slider">
+        {slides.map((slide, i) => (
+          <div
+            className="hero-slide"
+            style={{
+              transform: `translateX(${(i - index) * 100}%)`,
+              transition: 'transform 0.9s cubic-bezier(.5,0,.4,1)',
+              backgroundImage: `url(${slide.image})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              minHeight: '100vh',
+              width: '100vw',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+            }}
+            key={i}
+          />
+        ))}
       </div>
-      <div className="hero-content">
-        <h1 className="hero-title">SHAPING THE FUTURE</h1>
-        <h2 className="hero-subtitle">Innovative solutions for a digital tomorrow</h2>
-        <div className="buttons">
-          <a href="#services" className="button-primary">Let's Explore</a>
-          <a href="#contact" className="button-secondary">Contact Us</a>
-        </div>
-      </div>
-      <div className="scroll-indicator">
-        <a href="#services" aria-label="Scroll down">
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-          </svg>
-        </a>
+      <div className="hero-dots">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            className={`dot${index === i ? ' active' : ''}`}
+            onClick={() => handleDotClick(i)}
+            style={{
+              width: 15,
+              height: 15,
+              borderRadius: '50%',
+              margin: '0 5px',
+              display: 'inline-block',
+              background: index === i ? '#805438' : '#dedede',
+              border: '2.5px solid #fff',
+              transition: 'background .3s',
+              cursor: 'pointer', // kasih tanda bisa diklik
+              border: 'none',
+              padding: 0,
+            }}
+            aria-label={`Slide ${i + 1}`}
+          />
+        ))}
       </div>
     </section>
   );
 };
+
 
 export default HeroSection;

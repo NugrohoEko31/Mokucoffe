@@ -1,199 +1,176 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AdminLayout from '@/Layouts/AdminLayout';
 import { Link, router } from '@inertiajs/react';
+import ModalKonfirmasi from '@/components/ModalKonfirmasi';
 
 export default function Menus({ menuItems = [] }) {
-  function handleDelete(id) {
-    if (confirm('Apakah Anda yakin ingin menghapus menu ini?')) {
-      router.delete(`/admin/menus/${id}`);
-    }
+  const [modal, setModal] = useState({
+    open: false,
+    title: "",
+    message: "",
+    onOk: null,
+    okText: "OK",
+    okColor: "#be0909",
+  });
+
+  function confirmDelete(id) {
+    setModal({
+      open: true,
+      title: 'Hapus',
+      message: 'Anda yakin ingin menghapus menu ini?',
+      okText: 'Hapus',
+      okColor: '#be0909',
+      onOk: () => {
+        setModal(m => ({ ...m, open: false }));
+        router.delete(`/admin/menus/${id}`);
+      }
+    });
   }
 
   function renderMenuImage(image) {
     if (!image) return 'Tidak ada gambar';
-    // Pastikan path image selalu relative ke /storage
     const src = image.startsWith('menus/') ? `/storage/${image}` : `/storage/menus/${image}`;
     return (
       <img
         src={src}
         alt="Gambar Menu"
-        style={{ width: '100px', borderRadius: '6px' }}
+        style={{ width: 70, height: 60, borderRadius: 6, objectFit: 'cover', background: "#eee" }}
         onError={e => { e.target.style.display = 'none'; }}
       />
     );
   }
 
   return (
-    <AdminLayout title="Pengelolaan Menu">
-      <div className="actions">
-        <Link href="/admin/menus/create" className="btn btn-primary">
-          Tambah Menu
-        </Link>
-      </div>
-      <table className="menu-table">
-        <thead>
-          <tr>
-            <th>Judul</th>
-            <th>Harga</th>
-            <th>Deskripsi</th>
-            <th>Gambar</th>
-            <th>Aksi</th>
-          </tr>
-        </thead>
-        <tbody>
-          {menuItems.length === 0 ? (
+    <AdminLayout title="Kelola Menu">
+      <div style={{ margin: "10px 0 0 0", padding: 0 }}>
+        <table className="menu-table">
+          <thead>
             <tr>
-              <td colSpan="5">Tidak ada data menu.</td>
+              <th>No</th>
+              <th>Nama Menu</th>
+              <th>Harga</th>
+              <th>Deskripsi</th>
+              <th>Gambar</th>
+              <th>Rekomendasi</th>
+              <th>Aksi</th>
             </tr>
-          ) : (
-            menuItems.map(item => (
-              <tr key={item.id}>
-                <td>{item.title}</td>
-                <td>
-                  Rp {Number(item.price).toLocaleString('id-ID', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
-                </td>
-                <td>{item.description}</td>
-                <td>{renderMenuImage(item.image)}</td>
-                <td>
-                  <Link
-                    href={`/admin/menus/${item.id}/edit`}
-                    className="btn btn-warning"
-                    as="button"
-                  >
-                    Edit
-                  </Link>
-                  <button
-                    onClick={() => handleDelete(item.id)}
-                    className="btn btn-danger"
-                  >
-                    Hapus
-                  </button>
-                </td>
+          </thead>
+          <tbody>
+            {menuItems.length === 0 ? (
+              <tr>
+                <td colSpan="7" style={{ textAlign: "center" }}>Tidak ada data menu.</td>
               </tr>
-            ))
-          )}
-        </tbody>
-      </table>
+            ) : (
+              menuItems.map((item, idx) => (
+                <tr key={item.id}>
+                  <td>{idx + 1}</td>
+                  <td>{item.title}</td>
+                  <td>Rp.{Number(item.price).toLocaleString('id-ID')}</td>
+                  <td>{item.description}</td>
+                  <td>{renderMenuImage(item.image)}</td>
+                  <td>
+                    {Boolean(item.is_recommended) ? (
+                      <span style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        background: "#fff",
+                        border: "2px solid #222",
+                        borderRadius: "50%",
+                        width: 27,
+                        height: 27,
+                        fontSize: 18,
+                        fontWeight: "bold",
+                        color: "#222"
+                      }}>
+                        ✓
+                      </span>
+                    ) : null}
+                  </td>
+                  <td style={{ textAlign: "center" }}>
+                    <Link
+                      href={`/admin/menus/${item.id}/edit`}
+                      as="button"
+                      className="btn edit"
+                    >Edit</Link>
+                    <button
+                      onClick={() => confirmDelete(item.id)}
+                      className="btn hapus"
+                    >Hapus</button>
+                  </td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
+      <ModalKonfirmasi
+        open={modal.open}
+        title={modal.title}
+        message={modal.message}
+        onOk={modal.onOk}
+        onCancel={() => setModal(m => ({ ...m, open: false }))}
+        okText={modal.okText}
+        okColor={modal.okColor}
+      />
       <style jsx>{`
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Lora&family=Montserrat&display=swap');
-
-        @font-face {
-          font-family: 'Helvetica';
-          src: url('/fonts/Helvetica.ttf') format('truetype');
-          font-weight: normal;
-          font-style: normal;
-        }
-
-        :root {
-          --kopi-main: #805438;     /* Coklat utama - judul, accent, button */
-          --kopi-dark: #5a3927;     /* Coklat tua   - background utama */
-          --kopi-light: #b48a6e;    /* Coklat muda  - hover, accent, gradient */
-          --kopi-bg: #5a3927;       /* Background utama diganti menjadi coklat tua */
-          --kopi-bg-card: #5a3927;  /* Background kartu disamakan dengan warna dark */
-          --kopi-text: #f4eadf;     /* Teks menjadi terang agar kontras */
-          --kopi-white: #fff;       /* Putih murni jika perlu */
-        }
-
-        /* Reset dasar */
-        *,
-        *::before,
-        *::after {
-          box-sizing: border-box;
-          margin: 0;
-          padding: 0;
-        }
-
-        /* Body dan background utama */
-        body {
-          font-family: 'Poppins', sans-serif;
-          background: var(--kopi-bg);
-          color: var(--kopi-text);
-          line-height: 1.5;
-          min-height: 100vh;
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
-        }
-
-        /* Style tabel menu untuk warna kopi dark */
         .menu-table {
           width: 100%;
           border-collapse: collapse;
-          margin-top: 20px;
-          background: var(--kopi-bg-card);
-          border-radius: 12px;
-          color: var(--kopi-text);
-          box-shadow: 0 4px 6px rgba(0,0,0,0.5);
-          overflow: hidden;
+          background: #fff;
         }
-
         .menu-table th,
         .menu-table td {
-          border: 1px solid var(--kopi-light);
-          padding: 12px 15px;
-          text-align: left;
-          vertical-align: middle;
+          border: 1.5px solid #543913;
+          padding: 12px 13px 11px 13px;
+          text-align: center;
+          font-size: 1.04rem;
         }
-
-        .menu-table thead {
-          background: var(--kopi-main);
-          color: var(--kopi-white);
-          font-weight: 700;
+        .menu-table th {
+          background: #3F2300;
+          color: #fff;
+          font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+          font-weight: 800;
+          font-size: 1.12rem;
         }
-
-        .menu-table tbody tr:hover {
-          background: var(--kopi-light);
-          color: var(--kopi-dark);
-        }
-
-        /* Tombol */
-        .btn {
-          padding: 8px 16px;
-          border-radius: 6px;
+        .menu-table td {
+          color: #23190a;
+          font-family: 'Montserrat', Helvetica, Arial, sans-serif;
           font-weight: 600;
-          cursor: pointer;
+          background: #fff;
+        }
+        .menu-table tr:nth-child(even) td {
+          background: #faf8f6;
+        }
+        .btn.edit {
+          background: #c3a136;
+          color: #fff;
+          border-radius: 6px;
+          font-weight: bold;
+          margin-right: 10px;
+          padding: 7px 19px;
           border: none;
-          transition: background-color 0.3s ease;
-          font-family: 'Helvetica', sans-serif;
+          font-size: 1rem;
+          cursor: pointer;
+          transition: background 0.15s;
         }
-
-        .btn-primary {
-          background-color: var(--kopi-main);
-          color: var(--kopi-white);
+        .btn.edit:hover {
+          background: #ae8d25;
         }
-
-        .btn-primary:hover {
-          background-color: var(--kopi-light);
-          color: var(--kopi-dark);
+        .btn.hapus {
+          background: #cc1616;
+          color: #fff;
+          border-radius: 6px;
+          font-weight: bold;
+          padding: 7px 19px;
+          border: none;
+          font-size: 1rem;
+          cursor: pointer;
+          transition: background 0.15s;
         }
-
-        .btn-warning {
-          background-color: #c3913f;
-          color: var(--kopi-white);
+        .btn.hapus:hover {
+          background: #a91414;
         }
-
-        .btn-warning:hover {
-          background-color: var(--kopi-main);
-          color: var(--kopi-white);
-        }
-
-        .btn-danger {
-          background-color: #8b1e03;
-          color: var(--kopi-white);
-        }
-
-        .btn-danger:hover {
-          background-color: #5a1300;
-          color: var(--kopi-white);
-        }
-
-        /* Container aksi tombol */
-        .actions {
-          margin-bottom: 20px;
-          display: flex;
-          justify-content: flex-start;
-          gap: 12px;
-        }
-
       `}</style>
     </AdminLayout>
   );

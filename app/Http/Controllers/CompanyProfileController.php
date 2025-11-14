@@ -23,6 +23,14 @@ class CompanyProfileController extends Controller
 
     }
 
+    public function showAllMenu() {
+        $menuItems = Menu::all();
+        return Inertia::render('AllMenuSection', [
+            'menuItems' => $menuItems,
+        ]);
+    }
+
+
     public function location()
     {
         return Inertia::render('Location');

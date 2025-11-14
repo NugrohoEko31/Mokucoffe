@@ -1,23 +1,38 @@
-import React from 'react';
-import Navbar from '../components/Navbar';
+import React, { useEffect } from 'react';
+import UserLayout from "@/Layouts/UserLayout";
 import HeroSection from '../components/HeroSection';
-import ServicesSection from '../components/ServicesSection';
-import MenuSection from '../components/MenuSection'; // perbaiki import ini
+import MenuSection from '../components/MenuSection';
 import LocationSection from '../components/LocationSection';
-import ContactSection from '../components/ContactSection';
-import Footer from '../components/Footer';
 
-// Tambahkan destructure menuItems dari props:
 const Home = ({ menuItems }) => {
+    useEffect(() => {
+        const handleHashScroll = () => {
+        setTimeout(() => {
+            const hash = window.location.hash;
+            if (hash) {
+            const id = hash.replace('#', '');
+            const el = document.getElementById(id);
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }, 200);
+        };
+        handleHashScroll();
+        window.addEventListener('hashchange', handleHashScroll);
+        return () => window.removeEventListener('hashchange', handleHashScroll);
+    }, []);
+
     return (
-        <div>
-            <Navbar />
+        <UserLayout>
+        <section id="hero">
             <HeroSection />
-            <ServicesSection />
+        </section>
+        <section id="menu">
             <MenuSection menuItems={menuItems} />
+        </section>
+        <section id="location">
             <LocationSection />
-            <Footer/>
-        </div>
+        </section>
+        </UserLayout>
     );
 };
 

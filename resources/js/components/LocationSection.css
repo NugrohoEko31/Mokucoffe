@@ -16,7 +16,7 @@
   font-weight: 700;
   font-family: 'Helvetica', sans-serif;
   margin-bottom: 16px;
-  background: linear-gradient(90deg, var(--kopi-main), var(--kopi-light));
+  background: #fff;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -68,20 +68,22 @@
 }
 
 .location-info-title {
-  margin-bottom: 8px; /* memberi jarak bawah judul */
+  margin-bottom: 8px; 
+  color: #fff;
 }
 
 .location-info-text {
   margin-top: 0;
-  margin-bottom: 24px; /* memperbesar jarak bawah untuk membuat teks alamat naik */
+  margin-bottom: 24px;
   line-height: 1.4;
   font-size: 1rem;
-  color: var(--kopi-gray);
+  color: #fff;
 }
 
 .location-app-row {
   display: flex;
   gap: 24px;
+  align-items: center;
 }
 
 .location-address {
@@ -122,6 +124,15 @@
   font-family: 'Helvetica', sans-serif;
   font-weight: 600;
   font-size: 1.05rem;
+}
+
+.order-direct-title {
+  margin-top: 40px;
+  margin-bottom: 2px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  font-family: 'Montserrat', 'Helvetica', sans-serif;
 }
 
 @media (max-width: 768px) {

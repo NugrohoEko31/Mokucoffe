@@ -1,26 +1,22 @@
-/* NAVBAR SECTION */
 .navbar {
   position: fixed;
   width: 100%;
-  z-index: 2000;
+  z-index: 9999;
   transition: all 0.5s ease;
   padding: 12px 0;
   background-color: transparent;
 }
 
-/* Navbar sticky saat di-scroll */
 .navbar.scrolled {
   background-color: var(--kopi-dark);
   backdrop-filter: blur(8px);
   padding: 8px 0;
 }
 
-/* Container navigasi */
 .nav-container {
   width: 100%;
-  max-width: none;
   margin: 0;
-  padding: 0;
+  padding: 0 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -28,25 +24,35 @@
   position: relative;
 }
 
-/* Container kiri: logo dan teks */
-.nav-left {
+/* Gabungan logo + teks */
+.logo-brand {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 8px;
-  margin-left: 0;
-  padding-left: 8px;
+  gap: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 4px 7px;
+  border-radius: 10px;
+  transition: filter 0.2s, color 0.2s, background 0.19s;
+}
+.logo-brand:hover,
+.logo-brand:focus {
+  background: rgba(128,84,56,0.08);
+}
+.logo-brand:hover .logo,
+.logo-brand:focus .logo,
+.logo-brand:hover .logo-text,
+.logo-brand:focus .logo-text {
+  filter: brightness(1.06) drop-shadow(0 2px 12px #80543833);
+  color: var(--kopi-light);
 }
 
-/* Logo ukuran default PC */
 .logo {
   height: 70px;
   width: 70px;
-  margin-right: 4px;
   object-fit: contain;
+  transition: filter 0.2s;
 }
-
-/* Logo text default PC */
 .logo-text {
   color: var(--kopi-main);
   font-weight: bold;
@@ -57,18 +63,17 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-decoration: none;
+  transition: color 0.2s;
 }
 
-/* Container kanan: nav links default desktop tampil */
+/* Navbar Links Desktop */
 .nav-links {
   display: inline-flex;
   gap: 24px;
   justify-content: flex-end;
   margin-right: 8px;
-  ;
 }
 
-/* Link navbar */
 .nav-link {
   color: whitesmoke;
   padding: 8px 12px;
@@ -76,19 +81,23 @@
   text-decoration: none;
   font-family: 'Helvetica', sans-serif;
   font-weight: 500;
-  transition: color 0.3s;
+  transition: color 0.3s, background 0.2s;
+  border-radius: 4px;
+  font-size: 20px;
 }
-.nav-link:hover {
+.nav-link:hover,
+.nav-link:focus {
   color: var(--kopi-light);
+  background: rgba(128,84,56,0.13);
 }
 
-/* Tombol menu mobile default sembunyi di desktop */
+/* Hamburger Desktop Hide */
 .mobile-menu-button {
   background: transparent;
   border: none;
   color: var(--kopi-main);
   cursor: pointer;
-  display: none; /* default sembunyi di desktop */
+  display: none;
   align-items: center;
   justify-content: center;
   padding: 8px;
@@ -98,7 +107,7 @@
   position: relative;
 }
 
-/* Menu mobile dropdown default sembunyi */
+/* Mobile menu */
 .mobile-menu {
   background-color: var(--kopi-main);
   position: absolute;
@@ -109,14 +118,12 @@
   display: none;
   flex-direction: column;
   box-shadow: 0 4px 20px 4px rgba(128,84,56,0.15);
-  z-index: 110;
+  z-index: 2100;
   padding: 10px 0;
-  animation: fadeInMenu 0.2s;
+  animation: fadeInMenu 0.21s;
 }
-
-@keyframes fadeInMenu {
-  from { opacity: 0; transform: translateY(-10px); }
-  to   { opacity: 1; transform: translateY(0); }
+.mobile-menu.open {
+  display: flex !important;
 }
 .mobile-menu a {
   padding: 14px 22px;
@@ -125,37 +132,47 @@
   font-family: 'Helvetica', sans-serif;
   font-weight: 600;
   text-align: left;
-  transition: background-color 0.3s, color 0.3s;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
 }
-.mobile-menu a:hover {
+.mobile-menu a:hover,
+.mobile-menu a:focus {
   background: var(--kopi-light);
   color: var(--kopi-white);
 }
 
-/* MOBILE STYLES */
+@keyframes fadeInMenu {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive - MOBILE */
 @media (max-width: 767px) {
   .logo {
     height: 60px;
     width: 60px;
-    margin-right: 0px;
     object-fit: contain;
   }
   .logo-text {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
   }
 
-  /* Sembunyikan nav-links di mobile */
+  .nav-left {
+    gap: 4px;
+    padding-left: 0px;
+  }
+  /* Hide links desktop */
   .nav-links {
     display: none !important;
   }
-
-  /* Tampilkan tombol menu hamburger di mobile */
   .mobile-menu-button {
     display: inline-flex !important;
   }
-
-  /* Dipakai juga untuk tampilkan menu mobile dropdown */
-  .mobile-menu.open {
-    display: flex !important;
+  .mobile-menu {
+    position: fixed;
+    top: 72px;
+    right: 10px;
+    width: 154px;
+    z-index: 2200;
   }
 }

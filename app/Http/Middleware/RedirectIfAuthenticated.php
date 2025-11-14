@@ -12,7 +12,7 @@ class RedirectIfAuthenticated
     {
         $guard = $guards[0] ?? null;
         if (Auth::guard($guard)->check()) {
-            return redirect('/admin/dashboard'); // BUKAN redirect('/'); agar admin langsung ke dashboard
+            return redirect('/admin/menu'); // BUKAN redirect('/'); agar admin langsung ke dashboard
         }
         return $next($request);
         }

@@ -7,12 +7,12 @@ use App\Http\Controllers\CompanyProfileController;
 use App\Http\Controllers\Admin\MenuController;
 
 // ---------- ROUTE COMPANY PROFILE ----------
-Route::get('/', function () {
-    return Inertia::render('Home');
-});
+Route::get('/', [CompanyProfileController::class, 'home']);
+
 
 Route::get('/home', [CompanyProfileController::class, 'home'])->name('home');
 Route::get('/menu', [CompanyProfileController::class, 'menu'])->name('menu');
+Route::get('/AllMenuSection', [CompanyProfileController::class, 'showAllMenu'])->name('AllMenuSection');
 Route::get('/location', [CompanyProfileController::class, 'location'])->name('location');
 
 // ---------- ROUTE ADMIN ----------
@@ -24,9 +24,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     });
 
     // Auth: hanya untuk yang sudah login
-    Route::middleware('auth')->group(function () {
-        Route::get('/dashboard', fn () => Inertia::render('Admin/Dashboard'))->name('dashboard');
-        
+    Route::middleware('auth')->group(function () {        
         Route::get('/menu',        [MenuController::class, 'index'])->name('menus.index');
 
         // Tampilkan form tambah menu
@@ -45,6 +43,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Hapus menu
         Route::delete('/menus/{menu}', [MenuController::class, 'destroy'])->name('menus.destroy');
 
-        Route::post('/logout', [AuthController::class, 'logout'])->name('admin.logout');
+        Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
         });
 });

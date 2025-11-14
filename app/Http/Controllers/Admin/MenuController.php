@@ -32,12 +32,17 @@ class MenuController extends Controller
             'title' => 'required|string|max:255',
             'price' => 'required|numeric',
             'description' => 'nullable|string',
-            'image' => 'nullable|image|max:2048'
+            'image' => 'nullable|image|max:2048',
+            'is_recommended' => 'nullable|boolean'
         ]);
 
         if ($request->hasFile('image')) {
             $validated['image'] = $request->file('image')->store('menus', 'public');
         }
+
+        $validated['is_recommended'] = $request->has('is_recommended')
+            ? (bool)$request->input('is_recommended')
+            : false;
 
         Menu::create($validated);
 
@@ -59,7 +64,8 @@ class MenuController extends Controller
             'title' => 'required|string|max:255',
             'price' => 'required|numeric',
             'description' => 'nullable|string',
-            'image' => 'nullable|image|max:2048'
+            'image' => 'nullable|image|max:2048',
+            'is_recommended' => 'nullable|boolean'
         ]);
 
         if ($request->hasFile('image')) {
@@ -71,6 +77,10 @@ class MenuController extends Controller
             // Jangan isi $validated['image'], biarkan value lama tetap
             unset($validated['image']); // Penting: jangan kirim image:null!
         }
+
+        $validated['is_recommended'] = $request->has('is_recommended')
+            ? (bool)$request->input('is_recommended')
+            : false;
 
         $menu->update($validated);
 

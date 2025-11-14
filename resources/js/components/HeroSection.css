@@ -1,18 +1,69 @@
-/* HERO SECTION */
 .hero-section {
   position: relative;
+  overflow: hidden;
+  min-height: 420px;
+}
+
+.hero-slider {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.hero-slide {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  will-change: transform;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(50, 30, 10, 0.16);
+  z-index: 2;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+}
+
+.hero-dots {
+  position: absolute;
+  left: 50%;
+  bottom: 32px;
+  transform: translateX(-50%);
+  z-index: 20;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  overflow: hidden;
-  height: 100vh;
-  padding: 0 16px;
-  color: var(--kopi-dark);
-  background: var(--kopi-dark);
 }
 
-/* Dot latar belakang: nuansa kopi */
+
+.dot.active {
+  box-shadow: 0 0 6px #c6a77a;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+  color: #fff;
+  margin-bottom: 18px;
+  letter-spacing: 2px;
+  font-weight: 900;
+  text-shadow: 0 2px 16px #3a2a14ae;
+}
+.hero-subtitle {
+  color: #ffe7ce;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 36px;
+  text-shadow: 0 1px 12px #522f179c;
+}
+
 .hero-background-dot {
   position: absolute;
   border-radius: 50%;

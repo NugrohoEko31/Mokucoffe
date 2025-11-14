@@ -1,6 +1,6 @@
 .footer {
-  background: var(--kopi-dark);
-  padding: 48px 16px; /* beri padding samping agar mobile nyaman */
+  background: #fff;
+  padding: 36px 16px 40px 16px;
   border-top: 2px solid var(--kopi-main);
 }
 
@@ -12,75 +12,69 @@
   grid-template-columns: 1fr;
   gap: 32px;
 }
-
 @media (min-width: 768px) {
   .footer-container {
-    grid-template-columns: repeat(3, 1fr); /* ubah jadi 3 kolom untuk layout desktop/tablet */
+    grid-template-columns: repeat(3, 1fr);
+    align-items: flex-start; /* semua kolom sejajar atas */
   }
 }
 
+.footer-column {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: left;
+}
+
 .footer-column-title {
-  color: var(--kopi-main);
-  font-weight: bold;
-  font-size: 1.125rem;
+  color: #735319;
+  font-weight: 1000;
+  font-size: 1.18rem;
   margin-bottom: 16px;
-  font-family: 'Helvetica', sans-serif;
+  font-family: 'Montserrat', 'Helvetica', sans-serif;
 }
 
 .footer-col-text {
-  color: var(--kopi-light);
-  font-weight: bold;
-  font-size: 1rem;
-  margin-bottom: 16px;
-  font-family: 'Helvetica', sans-serif;
+  color: #45341e;
+  font-size: 1.05rem;
+  font-family: 'Montserrat', 'Helvetica', sans-serif;
+  font-weight: 700;
+  line-height: 1.48;
 }
 
 .footer-social-row {
-  color: var(--kopi-light);
-  transition: color 0.3s;
-  font-size: 22px; /* perbesar icon untuk sentuhan mobile */
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 16px;
 }
-
 .footer-social {
   display: flex;
   gap: 20px;
-  justify-content: flex-start; /* untuk mobile, posisi icon mulai dari kiri */
-}
-
-.footer-social a {
-  color: var(--kopi-light);
-  transition: color 0.3s;
-  font-size: 22px; /* perbesar icon untuk sentuhan mobile */
-}
-
-.footer-social a:hover {
-  color: var(--kopi-light);
-}
-
-.footer-bottom {
-  margin-top: 48px;
-  padding-top: 32px;
-  border-top: 2px solid var(--kopi-main);
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 16px;
-  text-align: center;
 }
-
-.footer-bottom-text {
-  color: var(--kopi-gray);
-  font-size: 0.875rem;
-  max-width: 100%;
+.footer-social-link {
+  color: #45341e;
+  transition: color 0.2s;
+  font-size: 2.1rem;
+}
+.footer-social-link:hover {
+  color: #b58736;
 }
 
 @media (max-width: 767px) {
   .footer-container {
-    padding: 0 16px; /* tambahkan padding samping untuk mobile */
+    padding: 0 10px;
+    grid-template-columns: 1fr;
+    gap: 28px;
   }
-
-  .footer-social {
-    justify-content: center; /* tengah icon sosial di mobile */
+  .footer-social-row {
+    justify-content: center;
+  }
+  .footer-column-title,
+  .footer-col-text {
+    text-align: center;
   }
 }

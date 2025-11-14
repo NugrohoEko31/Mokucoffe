@@ -1,43 +1,48 @@
 import React from 'react';
+import MenuSectionCard from './MenuSectionCard';
+import { Link } from '@inertiajs/react';
+import bgWave from '../assets/Background Putih.jpg'; // path ke file motif background
 import './MenuSection.css';
 
-const MenuSection = ({ menuItems }) => (
-  <section id="menu" className="menu-section">
-    <div className="menu-container">
-      <div className="menu-header">
-        <h2 className="menu-header-title">OUR MENU</h2>
-        <p className="menu-header-desc">Explore our delicious coffee selections.</p>
+const MenuSection = ({ menuItems = [], onSeeAll }) => (
+  <section
+    id="menu"
+    className="menu-section"
+    style={{
+      backgroundImage: `url(${bgWave})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+    }}
+  >
+    <div className="menu-content-wrapper">
+      <div className="menu-header-left">
+        <div className="menu-header-title">
+          Menu Kami
+        </div>
+        <p className="menu-header-desc">Jelajahi menu terbaik kami</p>
       </div>
-      <div className="menu-list">
-        {menuItems && menuItems.length > 0 ? (
-          menuItems.map(item => (
-            <div key={item.id} className="menu-item">
-              <div className="menu-image-container">
-                {item.image ? (
-                  <img
-                    src={`/storage/${item.image.startsWith('menus/') ? item.image : `menus/${item.image}`}`}
-                    alt={item.title}
-                    className="menu-photo"
-                    onError={e => { e.target.style.display = 'none'; }}
-                  />
-                ) : (
-                  <div className="menu-photo menu-photo-empty">Tidak ada gambar</div>
-                )}
-
-                {/* Overlay muncul saat hover */}
-                <div className="menu-overlay">
-                  <h3 className="menu-item-title">{item.title}</h3>
-                  <p className="menu-item-desc">{item.description}</p>
-                  <p className="menu-item-price">
-                    Rp {item.price && Number(item.price).toLocaleString('id-ID', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))
-        ) : (
-          <div className="menu-empty">Belum ada menu tersedia.</div>
-        )}
+      <div className="menu-list-right">
+        <div className="menu-list">
+          {menuItems.length === 0 ? (
+            <div className="menu-empty">Belum ada menu tersedia.</div>
+          ) : (
+            menuItems.slice(0, 3).map(item => (
+              <MenuSectionCard key={item.id} item={item} />
+            ))
+          )}
+        </div>
+        <div className="lihat-semua-btn-wrapper">
+          {onSeeAll ? (
+            <button className="lihat-semua-btn" onClick={onSeeAll}>
+              Lihat Semua →
+            </button>
+          ) : (
+            <Link href="/AllMenuSection" className="lihat-semua-btn">
+              Lihat Semua →
+            </Link>
+          )}
+        </div>
       </div>
     </div>
   </section>

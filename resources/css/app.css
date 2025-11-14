@@ -12,7 +12,7 @@
   --kopi-main: #805438;      /* Coklat utama - judul, accent, button */
   --kopi-dark: #5a3927;      /* Coklat tua   - background gradasi bawah, navbar sticky */
   --kopi-light: #b48a6e;     /* Coklat muda  - hover, accent, gradient */
-  --kopi-bg: #8c7e76;        /* Background utuh: gelap, kalem (bisa adjust ke #9a7652 jika ingin lebih coklat) */
+  --kopi-bg: #ffffff;        /* Background utuh: gelap, kalem (bisa adjust ke #9a7652 jika ingin lebih coklat) */
   --kopi-bg-card: #f4eadf;   /* Background card/kotak putih creamy */
   --kopi-text: #3e2615;      /* Warna teks utama - gelap lembut, enak dibaca di bg terang */
   --kopi-white: #fff;        /* Putih murni kalau perlu */

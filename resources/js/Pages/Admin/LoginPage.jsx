@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from '@inertiajs/react';
 import logo from '../../assets/LOGOMOKU.PNG';
+import bgImage from '../../assets/Background Admin.jpg';
+
 
 const LoginPage = () => {
   const { data, setData, post, processing, errors } = useForm({
     email: '',
     password: '',
   });
+
+  // State untuk toggle show/hide password
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,17 +21,20 @@ const LoginPage = () => {
   return (
     <div
       style={{
-        minHeight: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        background: 'var(--kopi-bg)',
-      }}
-      className="login-bg"
-    >
+          minHeight: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundImage: `url(${bgImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+        className="login-bg"
+      >
       <div
         style={{
-          background: 'var(--kopi-bg-card)',
+          background: 'rgba(255,255,255,0.80)',
           borderRadius: 24,
           padding: '56px 46px 50px 46px',
           boxShadow: '0 12px 48px #80543822',
@@ -51,20 +59,20 @@ const LoginPage = () => {
             gap: 22,
           }}
         >
-          <div
+          <label
+            htmlFor="email"
             style={{
-              textAlign: 'center',
-              fontFamily: 'Helvetica, Orbitron, Montserrat, sans-serif',
-              fontSize: 32,
-              fontWeight: 800,
-              letterSpacing: 1.7,
-              color: 'var(--kopi-main)',
-              marginBottom: 22,
+              fontFamily: 'Montserrat, Helvetica, sans-serif',
+              fontWeight: 600,
+              fontSize: 18,
+              color: 'var(--kopi-text)',
+              marginBottom: 7,
             }}
           >
-            Admin Login
-          </div>
+            Username / Email
+          </label>
           <input
+            id="email"
             type="email"
             placeholder="Email"
             value={data.email}
@@ -84,25 +92,71 @@ const LoginPage = () => {
             }}
           />
           {errors.email && <div style={{ color: '#b51c1c', fontSize: 15 }}>{errors.email}</div>}
-          <input
-            type="password"
-            placeholder="Password"
-            value={data.password}
-            autoComplete="current-password"
-            onChange={e => setData('password', e.target.value)}
-            required
+          {/* Password Label */}
+          <label
+            htmlFor="password"
             style={{
-              padding: '17px 16px',
-              fontSize: 19,
-              borderRadius: 8,
-              border: errors.password ? '2.5px solid #b51c1c' : '2px solid #b48a6e',
-              background: '#fcf6ef',
-              color: 'var(--kopi-text)',
-              marginBottom: errors.password ? 3 : 13,
-              outline: 'none',
               fontFamily: 'Montserrat, Helvetica, sans-serif',
+              fontWeight: 600,
+              fontSize: 18,
+              color: 'var(--kopi-text)',
+              marginBottom: 7,
             }}
-          />
+          >
+            Password
+          </label>
+          <div style={{ position: "relative", width: "100%" }}>
+            <input
+              id="password"
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              value={data.password}
+              autoComplete="current-password"
+              onChange={e => setData('password', e.target.value)}
+              required
+              style={{
+                width: "100%",
+                padding: '17px 16px',
+                fontSize: 19,
+                borderRadius: 8,
+                border: errors.password ? '2.5px solid #b51c1c' : '2px solid #b48a6e',
+                background: '#fcf6ef',
+                color: 'var(--kopi-text)',
+                marginBottom: errors.password ? 3 : 13,
+                outline: 'none',
+                fontFamily: 'Montserrat, Helvetica, sans-serif',
+              }}
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(v => !v)}
+              style={{
+                position: "absolute",
+                right: 13,
+                top: 14,
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                fontSize: 18,
+                padding: 3,
+                color: 'var(--kopi-main)'
+              }}
+              tabIndex={-1}
+              aria-label={showPassword ? "Hide password" : "Show password"}
+            >
+              {showPassword ? (
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--kopi-main)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M17.94 17.94A10.91 10.91 0 0 1 12 19C7 19 2.73 15.11 1 12c.7-1.31 1.69-2.73 3-3.93M9.53 9.53A3 3 0 0 1 12 9c1.66 0 3 1.34 3 3 0 .47-.1.91-.26 1.31"/>
+                  <path d="M1 1l22 22"/>
+                </svg>
+              ) : (
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--kopi-main)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+              )}
+            </button>
+          </div>
           {errors.password && <div style={{ color: '#b51c1c', fontSize: 15 }}>{errors.password}</div>}
           {errors.message && (
             <div
@@ -125,7 +179,7 @@ const LoginPage = () => {
             type="submit"
             disabled={processing}
             style={{
-              background: 'linear-gradient(90deg, var(--kopi-main), var(--kopi-light) 88%)',
+              background: '#3F2300',
               color: 'var(--kopi-white)',
               fontWeight: 800,
               borderRadius: 8,
@@ -138,7 +192,7 @@ const LoginPage = () => {
               letterSpacing: 1.2
             }}
           >
-            {processing ? 'Tunggu...' : 'Login'}
+            {processing ? 'Tunggu...' : 'Masuk'}
           </button>
         </form>
       </div>
