@@ -22,7 +22,7 @@ export default function ModalKonfirmasi({ open, title, message, onOk, onCancel, 
             background: #fff; border-radius:19px; padding:32px 36px 24px 36px; box-shadow:0 8px 44px #5439132b;
             min-width: 330px; max-width: 90vw; position: relative;
             }
-            .modal-title { font-size:1.25rem; font-weight:800; color:#2d1802; font-family:"Montserrat",sans-serif; margin-bottom:11px; }
+            .modal-title { font-size:1.25rem; font-weight:800; color:#2d1802; font-family:"Plus Jakarta Sans",sans-serif; margin-bottom:11px; }
             .modal-msg { color:#2b2b2b; font-size:1.01rem; margin-bottom:27px;}
             .modal-btn-row { display:flex; gap:18px; justify-content: flex-end; }
             .modal-ok {

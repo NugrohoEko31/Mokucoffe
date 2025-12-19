@@ -15,25 +15,10 @@ class CompanyProfileController extends Controller
         ]);
     }
 
-    public function menu()
-    {
-    $menus = Menu::all();
-    
-    return Inertia::render('MenuPage', [ 'menuItems' => $menus->toArray() ]);
-
-    }
-
     public function showAllMenu() {
         $menuItems = Menu::all();
         return Inertia::render('AllMenuSection', [
             'menuItems' => $menuItems,
         ]);
     }
-
-
-    public function location()
-    {
-        return Inertia::render('Location');
-    }
-    
 }

@@ -15,11 +15,11 @@
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
                 minHeight: '100vh',
-                position: 'relative', // jaga layering agar tidak tumpang tindih
-                zIndex: 1 // selalu lebih rendah dari navbar
+                position: 'relative',
+                zIndex: 1
                 }}
             >
-                <h2 className="menu-header-title">Menu Kami</h2>
+                <h2 className="menu-header-title-all">Menu Kami</h2>
                 <div className="menu-list-all">
                 {menuItems.length === 0 ? (
                     <div className="menu-empty">Belum ada menu tersedia.</div>

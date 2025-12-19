@@ -2,15 +2,16 @@
   position: fixed;
   width: 100%;
   z-index: 9999;
-  transition: all 0.5s ease;
-  padding: 12px 0;
-  background-color: transparent;
+  top: 0; left: 0;
+  padding: 8px 0;
+  background-color: #705534;
+  transition: box-shadow 0.3s, background 0.3s;
+  box-shadow: 0 2px 18px 0 #42270f19;
 }
 
 .navbar.scrolled {
-  background-color: var(--kopi-dark);
-  backdrop-filter: blur(8px);
-  padding: 8px 0;
+  background-color: #705534;
+  padding: 6px 0;
 }
 
 .nav-container {
@@ -24,7 +25,14 @@
   position: relative;
 }
 
-/* Gabungan logo + teks */
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: 0;
+}
+
 .logo-brand {
   display: flex;
   align-items: center;
@@ -42,137 +50,265 @@
 .logo-brand:hover .logo,
 .logo-brand:focus .logo,
 .logo-brand:hover .logo-text,
+
 .logo-brand:focus .logo-text {
   filter: brightness(1.06) drop-shadow(0 2px 12px #80543833);
-  color: var(--kopi-light);
+  color: #787070;
 }
 
 .logo {
-  height: 70px;
-  width: 70px;
+  height: 100px;
+  width: 100px;
   object-fit: contain;
-  transition: filter 0.2s;
+  border-radius: 8px;
 }
+
 .logo-text {
-  color: var(--kopi-main);
-  font-weight: bold;
-  font-size: 2rem;
-  font-family: 'Playfair Display', serif;
-  background: linear-gradient(90deg, var(--kopi-main), var(--kopi-light) 80%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.8rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   text-decoration: none;
-  transition: color 0.2s;
+  white-space: nowrap;
 }
 
 /* Navbar Links Desktop */
 .nav-links {
   display: inline-flex;
   gap: 24px;
+  align-items: center;
   justify-content: flex-end;
-  margin-right: 8px;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-link {
-  color: whitesmoke;
+  position: relative;
+  color: #fff;
   padding: 8px 12px;
   cursor: pointer;
   text-decoration: none;
-  font-family: 'Helvetica', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 500;
   transition: color 0.3s, background 0.2s;
   border-radius: 4px;
-  font-size: 20px;
-}
-.nav-link:hover,
-.nav-link:focus {
-  color: var(--kopi-light);
-  background: rgba(128,84,56,0.13);
+  font-size: 17px;
+  background: transparent;
 }
 
-/* Hamburger Desktop Hide */
+.nav-link:hover {
+  color: #f0f0f0;
+  transform: translateY(-1px);
+}
+
+.nav-link.active {
+  color: #fff;
+  font-weight: 600;
+}
+
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: -18px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #fff;
+  border-radius: 2px;
+}
+
+.mobile-nav-link.active {
+  font-weight: 600;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Hamburger Menu Button */
 .mobile-menu-button {
   background: transparent;
   border: none;
-  color: var(--kopi-main);
+  color: #fff;
   cursor: pointer;
   display: none;
   align-items: center;
   justify-content: center;
   padding: 8px;
   border-radius: 6px;
-  font-size: 28px;
+  font-size: 24px;
   z-index: 120;
   position: relative;
+  transition: background 0.2s;
+  margin-right: 0;
+}
+
+.mobile-menu-button:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 /* Mobile menu */
 .mobile-menu {
-  background-color: var(--kopi-main);
+  background-color: #705534;
   position: absolute;
-  top: 60px;
-  right: 8px;
-  width: 170px;
+  top: 100%;
+  right: 0;
+  width: 200px;
   border-radius: 10px;
   display: none;
   flex-direction: column;
-  box-shadow: 0 4px 20px 4px rgba(128,84,56,0.15);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   z-index: 2100;
   padding: 10px 0;
-  animation: fadeInMenu 0.21s;
+  animation: fadeInMenu 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
+
 .mobile-menu.open {
   display: flex !important;
 }
+
 .mobile-menu a {
-  padding: 14px 22px;
-  color: var(--kopi-light);
+  padding: 14px 20px;
+  color: #fff;
   text-decoration: none;
-  font-family: 'Helvetica', sans-serif;
-  font-weight: 600;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
   text-align: left;
-  border-radius: 8px;
-  transition: background 0.2s, color 0.2s;
+  transition: background 0.2s;
+  font-size: 1rem;
 }
-.mobile-menu a:hover,
-.mobile-menu a:focus {
-  background: var(--kopi-light);
-  color: var(--kopi-white);
+
+.mobile-menu a:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 @keyframes fadeInMenu {
-  from { opacity: 0; transform: translateY(-10px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from { 
+    opacity: 0; 
+    transform: translateY(-10px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
 }
 
-/* Responsive - MOBILE */
-@media (max-width: 767px) {
-  .logo {
-    height: 60px;
-    width: 60px;
-    object-fit: contain;
+/* ==================== TABLET RESPONSIVE (769px - 1024px) ==================== */
+@media (max-width: 1024px) {
+  .nav-container {
+    height: 65px;
+    padding: 0 30px;
   }
+  
+  .logo {
+    height: 45px;
+    width: 45px;
+  }
+  
+  .logo-text {
+    font-size: 1.6rem;
+  }
+  
+  .nav-links {
+    gap: 24px;
+  }
+  
+  .nav-link {
+    font-size: 1rem;
+  }
+}
+
+/* ==================== MOBILE (481px - 768px) ==================== */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 6px 0;
+  }
+  
+  .nav-container {
+    height: 60px;
+    padding: 0 20px;
+  }
+  
+  .logo {
+    height: 40px;
+    width: 40px;
+  }
+  
+  .logo-text {
+    font-size: 1.4rem;
+  }
+
+  /* Hide desktop navigation */
+  .nav-right .nav-links {
+    display: none;
+  }
+  
+  .mobile-menu-button {
+    display: flex;
+    padding: 6px;
+    font-size: 22px;
+  }
+  
+  .mobile-menu {
+    right: 0;
+    width: 180px;
+  }
+}
+
+/* ==================== SMALL MOBILE (320px - 480px) ==================== */
+@media (max-width: 480px) {
+  .nav-container {
+    height: 56px;
+    padding: 0 15px;
+  }
+  
+  .logo {
+    height: 36px;
+    width: 36px;
+  }
+  
   .logo-text {
     font-size: 1.3rem;
   }
-
-  .nav-left {
-    gap: 4px;
-    padding-left: 0px;
-  }
-  /* Hide links desktop */
-  .nav-links {
-    display: none !important;
-  }
+  
   .mobile-menu-button {
-    display: inline-flex !important;
+    font-size: 20px;
+    padding: 5px;
   }
+  
   .mobile-menu {
-    position: fixed;
-    top: 72px;
-    right: 10px;
-    width: 154px;
-    z-index: 2200;
+    right: 0;
+    width: 160px;
+  }
+  
+  .mobile-menu a {
+    padding: 12px 16px;
+    font-size: 0.95rem;
+  }
+}
+
+/* ==================== VERY SMALL MOBILE (max-width: 320px) ==================== */
+@media (max-width: 320px) {
+  .nav-container {
+    height: 52px;
+    padding: 0 10px;
+  }
+  
+  .logo {
+    height: 32px;
+    width: 32px;
+  }
+  
+  .logo-text {
+    font-size: 1.2rem;
+  }
+  
+  .mobile-menu {
+    width: 150px;
+    right: 0;
+  }
+  
+  .mobile-menu a {
+    padding: 10px 14px;
+    font-size: 0.9rem;
   }
 }

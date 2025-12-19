@@ -14,7 +14,7 @@
 .location-title {
   font-size: 2.25rem;
   font-weight: 700;
-  font-family: 'Helvetica', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   margin-bottom: 16px;
   background: #fff;
   -webkit-background-clip: text;
@@ -40,8 +40,8 @@
 }
 
 .location-map-card {
-  width: 420px;
-  height: 420px;
+  width: 580px;
+  height: 460px;
   border-radius: 24px;
   overflow: hidden;
   box-shadow: 0 0 20px var(--kopi-shadow);
@@ -96,12 +96,11 @@
   margin: 0 auto;
   padding: 0 16px;
   color: var(--kopi-main);
-  font-family: 'Helvetica', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
   font-size: 1.125rem;
   text-align: center;
 }
-
 
 .location-app-link {
   display: inline-block;
@@ -114,14 +113,14 @@
 }
 
 .app-logo {
-  width: 180px;
+  width: 150px;
   height: auto;
   display: block;
 }
 
 .app-btn-text {
   color: var(--kopi-main);
-  font-family: 'Helvetica', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   font-size: 1.05rem;
 }
@@ -132,25 +131,257 @@
   font-size: 1.5rem;
   font-weight: bold;
   color: #fff;
-  font-family: 'Montserrat', 'Helvetica', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-@media (max-width: 768px) {
+/* ==================== TABLET RESPONSIVE (769px - 1024px) ==================== */
+@media (max-width: 1024px) {
+  .location-section {
+    padding: 60px 0;
+  }
+  
+  .location-content-flex {
+    gap: 40px;
+  }
+  
   .location-map-card {
-    width: 100%; /* Lebar penuh container */
-    max-width: 320px; /* Maksimal lebar peta di mobile */
-    height: 320px; /* Sesuaikan tinggi peta */
+    width: 500px;
+    height: 400px;
   }
-
-  .location-map {
-    min-width: 100% !important; /* peta mengikuti lebar parent */
-    min-height: 320px !important; /* tinggi peta */
+  
+  .location-info-column {
+    max-width: 300px;
+  }
+  
+  .app-logo {
+    width: 130px;
   }
 }
 
-
+/* ==================== SMALL TABLET (601px - 768px) ==================== */
 @media (max-width: 768px) {
+  .location-section {
+    padding: 50px 0;
+  }
+  
+  .location-title {
+    font-size: 2rem;
+    margin-bottom: 12px;
+  }
+  
+  .location-desc {
+    font-size: 1rem;
+    margin-bottom: 36px;
+  }
+  
+  .location-content-flex {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .location-map-card {
+    width: 100%;
+    max-width: 500px;
+    height: 350px;
+  }
+  
+  .location-info-column {
+    max-width: 100%;
+    text-align: center;
+    align-items: center;
+  }
+  
+  .location-app-row {
+    justify-content: center;
+  }
+  
+  .app-logo {
+    width: 120px;
+  }
+  
   .app-btn-text {
     font-size: 0.97rem;
+  }
+  
+  .order-direct-title {
+    margin-top: 30px;
+    font-size: 1.3rem;
+  }
+  
+  .location-address-text {
+    font-size: 1rem;
+  }
+}
+
+/* ==================== MOBILE (481px - 600px) ==================== */
+@media (max-width: 600px) {
+  .location-section {
+    padding: 40px 0;
+  }
+  
+  .location-container {
+    padding: 0 12px;
+  }
+  
+  .location-title {
+    font-size: 1.75rem;
+  }
+  
+  .location-desc {
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+  }
+  
+  .location-map-card {
+    height: 300px;
+    border-radius: 16px;
+  }
+  
+  .location-map {
+    border-radius: 16px;
+  }
+  
+  .location-info-text {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
+  
+  .location-app-row {
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .app-logo {
+    width: 110px;
+  }
+  
+  .order-direct-title {
+    margin-top: 25px;
+    font-size: 1.2rem;
+  }
+  
+  .location-address {
+    padding: 20px 0;
+  }
+  
+  .location-address-text {
+    font-size: 0.95rem;
+    padding: 0 12px;
+  }
+}
+
+/* ==================== SMALL MOBILE (320px - 480px) ==================== */
+@media (max-width: 480px) {
+  .location-section {
+    padding: 30px 0;
+  }
+  
+  .location-title {
+    font-size: 1.5rem;
+  }
+  
+  .location-desc {
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+  }
+  
+  .location-content-flex {
+    gap: 25px;
+  }
+  
+  .location-map-card {
+    height: 250px;
+    border-radius: 12px;
+  }
+  
+  .location-map {
+    border-radius: 12px;
+  }
+  
+  .location-info-text {
+    font-size: 0.9rem;
+    margin-bottom: 18px;
+  }
+  
+  .location-app-row {
+    gap: 12px;
+  }
+  
+  .app-logo {
+    width: 100px;
+  }
+  
+  .app-btn-text {
+    font-size: 0.9rem;
+  }
+  
+  .order-direct-title {
+    margin-top: 20px;
+    font-size: 1.1rem;
+  }
+  
+  .location-address {
+    padding: 16px 0;
+  }
+  
+  .location-address-text {
+    font-size: 0.9rem;
+  }
+}
+
+/* ==================== VERY SMALL MOBILE (max-width: 320px) ==================== */
+@media (max-width: 320px) {
+  .location-section {
+    padding: 25px 0;
+  }
+  
+  .location-container {
+    padding: 0 10px;
+  }
+  
+  .location-title {
+    font-size: 1.4rem;
+  }
+  
+  .location-desc {
+    font-size: 0.85rem;
+  }
+  
+  .location-map-card {
+    height: 220px;
+  }
+  
+  .location-app-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .app-logo {
+    width: 90px;
+  }
+  
+  .order-direct-title {
+    font-size: 1rem;
+  }
+}
+
+/* ==================== LANDSCAPE MOBILE ==================== */
+@media (max-height: 500px) and (orientation: landscape) {
+  .location-section {
+    padding: 40px 0;
+  }
+  
+  .location-map-card {
+    height: 250px;
+  }
+  
+  .location-content-flex {
+    flex-direction: row;
+    gap: 30px;
+  }
+  
+  .location-info-column {
+    max-width: 250px;
   }
 }

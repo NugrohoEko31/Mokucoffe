@@ -1,22 +1,16 @@
 .footer {
-  background: #fff;
+  background: #705534;
   padding: 36px 16px 40px 16px;
   border-top: 2px solid var(--kopi-main);
 }
 
 .footer-container {
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 0;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  max-width: 1300px;
+  margin: 0 auto;
   gap: 32px;
-}
-@media (min-width: 768px) {
-  .footer-container {
-    grid-template-columns: repeat(3, 1fr);
-    align-items: flex-start; /* semua kolom sejajar atas */
-  }
+  padding: 0;
 }
 
 .footer-column {
@@ -28,17 +22,17 @@
 }
 
 .footer-column-title {
-  color: #735319;
+  color: #ffffff;
   font-weight: 1000;
   font-size: 1.18rem;
   margin-bottom: 16px;
-  font-family: 'Montserrat', 'Helvetica', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .footer-col-text {
-  color: #45341e;
+  color: #ffffff;
   font-size: 1.05rem;
-  font-family: 'Montserrat', 'Helvetica', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
   line-height: 1.48;
 }
@@ -50,31 +44,231 @@
   align-items: center;
   margin-top: 16px;
 }
+
 .footer-social {
   display: flex;
   gap: 20px;
   align-items: center;
 }
+
 .footer-social-link {
-  color: #45341e;
+  color: #ffffff;
   transition: color 0.2s;
   font-size: 2.1rem;
 }
+
 .footer-social-link:hover {
   color: #b58736;
 }
 
-@media (max-width: 767px) {
+.footer-logo-kanan {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.footer-logo-kanan img {
+  width: 150px;
+  height: auto;
+}
+
+/* ==================== TABLET RESPONSIVE (769px - 1024px) ==================== */
+@media (max-width: 1024px) {
+  .footer {
+    padding: 32px 16px 36px 16px;
+  }
+  
   .footer-container {
-    padding: 0 10px;
-    grid-template-columns: 1fr;
     gap: 28px;
   }
+  
+  .footer-column-title {
+    font-size: 1.15rem;
+    margin-bottom: 14px;
+  }
+  
+  .footer-col-text {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  .footer-social-link {
+    font-size: 1.9rem;
+  }
+  
+  .footer-logo-kanan img {
+    width: 130px;
+  }
+}
+
+/* ==================== SMALL TABLET (601px - 768px) ==================== */
+@media (max-width: 768px) {
+  .footer {
+    padding: 28px 16px 32px 16px;
+  }
+  
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  
+  .footer-logo-kanan {
+    grid-column: 2 / 3;
+    justify-content: flex-end;
+    margin-top: 20px;
+  }
+  
+  .footer-column-title {
+    font-size: 1.12rem;
+    margin-bottom: 12px;
+  }
+  
+  .footer-col-text {
+    font-size: 0.95rem;
+  }
+  
+  .footer-social {
+    gap: 16px;
+  }
+  
+  .footer-social-link {
+    font-size: 1.8rem;
+  }
+  
+  .footer-logo-kanan img {
+    width: 120px;
+  }
+}
+
+/* ==================== MOBILE (481px - 600px) ==================== */
+@media (max-width: 600px) {
+  .footer {
+    padding: 24px 12px 28px 12px;
+  }
+  
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    text-align: center;
+  }
+  
+  .footer-column {
+    text-align: center;
+    align-items: center;
+  }
+  
+  .footer-logo-kanan {
+    grid-column: 1;
+    justify-content: center;
+    margin-top: 10px;
+    order: 4; /* Letakkan logo di bawah */
+  }
+  
+  .footer-column-title {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  
+  .footer-col-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    max-width: 300px;
+  }
+  
   .footer-social-row {
     justify-content: center;
   }
-  .footer-column-title,
+  
+  .footer-social {
+    gap: 15px;
+  }
+  
+  .footer-social-link {
+    font-size: 1.7rem;
+  }
+  
+  .footer-logo-kanan img {
+    width: 100px;
+  }
+}
+
+/* ==================== SMALL MOBILE (320px - 480px) ==================== */
+@media (max-width: 480px) {
+  .footer {
+    padding: 20px 10px 24px 10px;
+  }
+  
+  .footer-container {
+    gap: 18px;
+  }
+  
+  .footer-column-title {
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+  }
+  
   .footer-col-text {
-    text-align: center;
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+  
+  .footer-social {
+    gap: 12px;
+  }
+  
+  .footer-social-link {
+    font-size: 1.5rem;
+  }
+  
+  .footer-logo-kanan img {
+    width: 80px;
+  }
+}
+
+/* ==================== VERY SMALL MOBILE (max-width: 320px) ==================== */
+@media (max-width: 320px) {
+  .footer {
+    padding: 16px 8px 20px 8px;
+  }
+  
+  .footer-container {
+    gap: 16px;
+  }
+  
+  .footer-column-title {
+    font-size: 1rem;
+  }
+  
+  .footer-col-text {
+    font-size: 0.8rem;
+  }
+  
+  .footer-social {
+    gap: 10px;
+  }
+  
+  .footer-social-link {
+    font-size: 1.4rem;
+  }
+  
+  .footer-logo-kanan img {
+    width: 70px;
+  }
+}
+
+/* ==================== LANDSCAPE MOBILE ==================== */
+@media (max-height: 500px) and (orientation: landscape) {
+  .footer {
+    padding: 20px 16px 24px 16px;
+  }
+  
+  .footer-container {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+  }
+  
+  .footer-logo-kanan {
+    grid-column: 3;
+    justify-content: center;
+    margin-top: 0;
   }
 }

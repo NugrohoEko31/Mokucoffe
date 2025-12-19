@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import UserLayout from "@/Layouts/UserLayout";
 import HeroSection from '../components/HeroSection';
+import AboutUs from '../components/AboutUs';
 import MenuSection from '../components/MenuSection';
 import LocationSection from '../components/LocationSection';
 
@@ -25,6 +26,9 @@ const Home = ({ menuItems }) => {
         <UserLayout>
         <section id="hero">
             <HeroSection />
+        </section>
+        <section id="aboutus">
+            <AboutUs />
         </section>
         <section id="menu">
             <MenuSection menuItems={menuItems} />

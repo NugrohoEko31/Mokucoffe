@@ -1,24 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Lora&family=Montserrat&display=swap');
-
-@font-face {
-  font-family: 'Helvetica';
-  src: url('/fonts/Helvetica.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-
 :root {
-  --kopi-main: #805438;      /* Coklat utama - judul, accent, button */
-  --kopi-dark: #5a3927;      /* Coklat tua   - background gradasi bawah, navbar sticky */
-  --kopi-light: #b48a6e;     /* Coklat muda  - hover, accent, gradient */
-  --kopi-bg: #ffffff;        /* Background utuh: gelap, kalem (bisa adjust ke #9a7652 jika ingin lebih coklat) */
-  --kopi-bg-card: #f4eadf;   /* Background card/kotak putih creamy */
-  --kopi-text: #3e2615;      /* Warna teks utama - gelap lembut, enak dibaca di bg terang */
-  --kopi-white: #fff;        /* Putih murni kalau perlu */
+  --kopi-main: #805438;
+  --kopi-dark: #5a3927;
+  --kopi-light: #b48a6e;
+  --kopi-bg: #ffffff;
+  --kopi-bg-card: #f4eadf;
+  --kopi-text: #3e2615;
+  --kopi-white: #fff;
 }
 
-/* Reset dasar agar tampilan konsisten di berbagai browser */
+/* FIX: Tambahkan ini untuk mencegah horizontal scroll */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
 *,
 *::before,
 *::after {
@@ -27,53 +24,65 @@
   padding: 0;
 }
 
-/* Atur font dasar dan background body */
 body {
-  font-family: 'Poppins', sans-serif;
-  background: var(--kopi-bg);   /* Gunakan variabel agar seluruh/section seragam */
-  color: var(--kopi-text);      /* Teks pakai warna variabel */
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--kopi-bg);
+  color: var(--kopi-text);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
+  /* FIX: Pastikan body tidak bisa scroll horizontal */
+  width: 100%;
+  position: relative;
 }
 
-/* Link tanpa garis bawah, warna selalu ikut inherit parent atau diatur di komponen */
 a {
   color: inherit;
   text-decoration: none;
 }
 
-/* Heading default */
 h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
   color: var(--kopi-main);
-  font-family: 'Playfair Display', serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 p, li, a {
-  font-family: 'Pacifico', cursive;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-/* Elemen gambar responsif */
 img {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
-/* Kontainer pusat standar */
+/* FIX: Container tambahkan overflow hidden */
 .container {
   max-width: 1120px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 16px;
   padding-right: 16px;
+  width: 100%;
+  overflow: hidden;
 }
 
-/* Tambahan: warna background card/kotak sebaiknya konsisten */
 .card, .service-card, .timeline-card, .contact-form-box {
   background: var(--kopi-bg-card);
   border-radius: 16px;
   color: var(--kopi-dark);
+}
+
+/* FIX: Tambahkan class untuk sections yang menggunakan 100vw */
+.section-full {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* FIX: Untuk komponen yang sebelumnya pakai 100vw */
+.hero-section, .aboutus-section {
+  width: 100%;
+  overflow: hidden;
 }

@@ -34,7 +34,7 @@ export default function Menus({ menuItems = [] }) {
       <img
         src={src}
         alt="Gambar Menu"
-        style={{ width: 70, height: 60, borderRadius: 6, objectFit: 'cover', background: "#eee" }}
+        className="menu-image"
         onError={e => { e.target.style.display = 'none'; }}
       />
     );
@@ -42,7 +42,7 @@ export default function Menus({ menuItems = [] }) {
 
   return (
     <AdminLayout title="Kelola Menu">
-      <div style={{ margin: "10px 0 0 0", padding: 0 }}>
+      <div className="table-container">
         <table className="menu-table">
           <thead>
             <tr>
@@ -58,16 +58,16 @@ export default function Menus({ menuItems = [] }) {
           <tbody>
             {menuItems.length === 0 ? (
               <tr>
-                <td colSpan="7" style={{ textAlign: "center" }}>Tidak ada data menu.</td>
+                <td colSpan="7" className="no-data">Tidak ada data menu.</td>
               </tr>
             ) : (
               menuItems.map((item, idx) => (
                 <tr key={item.id}>
-                  <td>{idx + 1}</td>
-                  <td>{item.title}</td>
-                  <td>Rp.{Number(item.price).toLocaleString('id-ID')}</td>
-                  <td>{item.description}</td>
-                  <td>{renderMenuImage(item.image)}</td>
+                  <td className="number-cell">{idx + 1}</td>
+                  <td className="title-cell">{item.title}</td>
+                  <td className="price-cell">Rp.{Number(item.price).toLocaleString('id-ID')}</td>
+                  <td className="desc-cell">{item.description}</td>
+                  <td className="image-cell">{renderMenuImage(item.image)}</td>
                   <td>
                     {Boolean(item.is_recommended) ? (
                       <span style={{
@@ -87,7 +87,7 @@ export default function Menus({ menuItems = [] }) {
                       </span>
                     ) : null}
                   </td>
-                  <td style={{ textAlign: "center" }}>
+                  <td className="action-cell">
                     <Link
                       href={`/admin/menus/${item.id}/edit`}
                       as="button"
@@ -113,63 +113,333 @@ export default function Menus({ menuItems = [] }) {
         okText={modal.okText}
         okColor={modal.okColor}
       />
+
       <style jsx>{`
+        .table-container {
+          margin: 10px 0 0 0;
+          padding: 0;
+          width: 100%;
+          overflow-x: auto;
+          background: #fdf8ef;
+        }
+
         .menu-table {
           width: 100%;
           border-collapse: collapse;
-          background: #fff;
+          background: #fdf8ef;
+          min-width: 800px;
         }
-        .menu-table th,
-        .menu-table td {
-          border: 1.5px solid #543913;
-          padding: 12px 13px 11px 13px;
+
+        .menu-table th, .menu-table td {
+          border: 1px solid #543913;
+          padding: 7px 9px;
+          font-size: 1rem;
           text-align: center;
-          font-size: 1.04rem;
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-weight: 600;
         }
+
         .menu-table th {
           background: #3F2300;
           color: #fff;
-          font-family: 'Montserrat', Helvetica, Arial, sans-serif;
           font-weight: 800;
-          font-size: 1.12rem;
+          font-size: 1.04rem;
         }
+
         .menu-table td {
           color: #23190a;
-          font-family: 'Montserrat', Helvetica, Arial, sans-serif;
-          font-weight: 600;
-          background: #fff;
+          background: #fdf8ef;
+          font-weight: 500;
         }
+
         .menu-table tr:nth-child(even) td {
-          background: #faf8f6;
+          background: #fdf8ef;
         }
+
+        .no-data {
+          text-align: center;
+          padding: 20px;
+        }
+
+        .menu-image {
+          width: 70px;
+          height: 60px;
+          border-radius: 6px;
+          object-fit: cover;
+          background: #eee;
+        }
+
+        .recommend-badge {
+          display: inline-flex;
+          alignItems: center;
+          justifyContent: center;
+          background: #fff;
+          border: 2px solid #222;
+          border-radius: 50%;
+          width: 27px;
+          height: 27px;
+          fontSize: 18px;
+          fontWeight: bold;
+          color: #222;
+        }
+
+        .btn {
+          font-size: 0.98rem;
+          padding: 6px 17px;
+          border-radius: 5px;
+          border: none;
+          cursor: pointer;
+          transition: background 0.15s;
+          font-weight: bold;
+        }
+
         .btn.edit {
           background: #c3a136;
           color: #fff;
           border-radius: 6px;
-          font-weight: bold;
           margin-right: 10px;
           padding: 7px 19px;
-          border: none;
           font-size: 1rem;
-          cursor: pointer;
-          transition: background 0.15s;
         }
+
         .btn.edit:hover {
           background: #ae8d25;
         }
+
         .btn.hapus {
           background: #cc1616;
           color: #fff;
           border-radius: 6px;
-          font-weight: bold;
           padding: 7px 19px;
-          border: none;
           font-size: 1rem;
-          cursor: pointer;
-          transition: background 0.15s;
         }
+
         .btn.hapus:hover {
           background: #a91414;
+        }
+
+        /* ==================== TABLET RESPONSIVE (769px - 1024px) ==================== */
+        @media (max-width: 1024px) {
+          .menu-table {
+            min-width: 700px;
+          }
+
+          .menu-table th, .menu-table td {
+            padding: 6px 8px;
+            font-size: 0.95rem;
+          }
+
+          .menu-table th {
+            font-size: 1rem;
+          }
+
+          .menu-image {
+            width: 60px;
+            height: 50px;
+          }
+
+          .btn {
+            padding: 5px 14px;
+            font-size: 0.9rem;
+          }
+
+          .btn.edit, .btn.hapus {
+            padding: 6px 16px;
+          }
+        }
+
+        /* ==================== SMALL TABLET (601px - 768px) ==================== */
+        @media (max-width: 768px) {
+          .menu-table {
+            min-width: 650px;
+          }
+
+          .menu-table th, .menu-table td {
+            padding: 5px 6px;
+            font-size: 0.9rem;
+          }
+
+          .menu-table th {
+            font-size: 0.95rem;
+          }
+
+          .menu-image {
+            width: 50px;
+            height: 45px;
+          }
+
+          .recommend-badge {
+            width: 22px;
+            height: 22px;
+            font-size: 14px;
+          }
+
+          .btn {
+            padding: 4px 12px;
+            font-size: 0.85rem;
+          }
+
+          .btn.edit, .btn.hapus {
+            padding: 5px 14px;
+            margin-right: 5px;
+          }
+        }
+
+        /* ==================== MOBILE (481px - 600px) ==================== */
+        @media (max-width: 600px) {
+          .table-container {
+            margin: 5px 0 0 0;
+          }
+
+          .menu-table {
+            min-width: 600px;
+          }
+
+          .menu-table th, .menu-table td {
+            padding: 4px 5px;
+            font-size: 0.85rem;
+          }
+
+          .menu-table th {
+            font-size: 0.9rem;
+            padding: 6px 4px;
+          }
+
+          .menu-image {
+            width: 45px;
+            height: 40px;
+          }
+
+          .recommend-badge {
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+          }
+
+          .btn {
+            padding: 3px 10px;
+            font-size: 0.8rem;
+          }
+
+          .btn.edit, .btn.hapus {
+            padding: 4px 12px;
+            margin-right: 4px;
+          }
+        }
+
+        /* ==================== SMALL MOBILE (320px - 480px) ==================== */
+        @media (max-width: 480px) {
+          .menu-table {
+            min-width: 550px;
+          }
+
+          .menu-table th, .menu-table td {
+            padding: 3px 4px;
+            font-size: 0.8rem;
+          }
+
+          .menu-table th {
+            font-size: 0.85rem;
+            padding: 5px 3px;
+          }
+
+          .menu-image {
+            width: 40px;
+            height: 35px;
+          }
+
+          .recommend-badge {
+            width: 18px;
+            height: 18px;
+            font-size: 11px;
+          }
+
+          .btn {
+            padding: 2px 8px;
+            font-size: 0.75rem;
+          }
+
+          .btn.edit, .btn.hapus {
+            padding: 3px 10px;
+            margin-right: 3px;
+          }
+
+          .no-data {
+            padding: 15px;
+            font-size: 0.9rem;
+          }
+        }
+
+        /* ==================== VERY SMALL MOBILE (max-width: 320px) ==================== */
+        @media (max-width: 320px) {
+          .menu-table {
+            min-width: 500px;
+          }
+
+          .menu-table th, .menu-table td {
+            padding: 2px 3px;
+            font-size: 0.75rem;
+          }
+
+          .menu-table th {
+            font-size: 0.8rem;
+          }
+
+          .menu-image {
+            width: 35px;
+            height: 30px;
+          }
+
+          .btn {
+            padding: 2px 6px;
+            font-size: 0.7rem;
+          }
+
+          .btn.edit, .btn.hapus {
+            padding: 2px 8px;
+          }
+        }
+
+        /* ==================== LANDSCAPE MOBILE ==================== */
+        @media (max-height: 500px) and (orientation: landscape) {
+          .table-container {
+            margin: 5px 0;
+          }
+
+          .menu-table th, .menu-table td {
+            padding: 4px 6px;
+          }
+
+          .menu-image {
+            width: 50px;
+            height: 45px;
+          }
+        }
+
+        /* ==================== HIGH RESOLUTION DISPLAY ==================== */
+        @media (min-width: 1400px) {
+          .menu-table th, .menu-table td {
+            padding: 8px 12px;
+            font-size: 1.05rem;
+          }
+
+          .menu-table th {
+            font-size: 1.1rem;
+          }
+
+          .menu-image {
+            width: 80px;
+            height: 70px;
+          }
+
+          .btn {
+            padding: 7px 20px;
+            font-size: 1rem;
+          }
+
+          .btn.edit, .btn.hapus {
+            padding: 8px 22px;
+          }
         }
       `}</style>
     </AdminLayout>

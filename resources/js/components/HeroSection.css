@@ -1,206 +1,143 @@
 .hero-section {
   position: relative;
   overflow: hidden;
-  min-height: 420px;
+  min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .hero-slider {
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 .hero-slide {
   position: absolute;
-  top: 0; left: 0;
-  width: 100vw;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100vh;
+  margin: 0;
+  padding: 0;
   will-change: transform;
 }
 
 .hero-overlay {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: rgba(50, 30, 10, 0.16);
   z-index: 2;
+  margin: 0;
+  padding: 0;
 }
 
-.hero-content {
-  position: relative;
-  z-index: 3;
-  text-align: center;
+/* ==================== TABLET RESPONSIVE (769px - 1024px) ==================== */
+@media (max-width: 1024px) {
+  .hero-section {
+    min-height: 80vh;
+  }
+  
+  .hero-slider,
+  .hero-slide {
+    height: 80vh;
+  }
+  
+  .hero-overlay {
+    background: rgba(50, 30, 10, 0.18); /* Sedikit lebih gelap di tablet */
+  }
 }
 
-.hero-dots {
-  position: absolute;
-  left: 50%;
-  bottom: 32px;
-  transform: translateX(-50%);
-  z-index: 20;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* ==================== SMALL TABLET (601px - 768px) ==================== */
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 70vh;
+  }
+  
+  .hero-slider,
+  .hero-slide {
+    height: 70vh;
+  }
+  
+  .hero-overlay {
+    background: rgba(50, 30, 10, 0.2); /* Lebih gelap lagi di small tablet */
+  }
 }
 
-
-.dot.active {
-  box-shadow: 0 0 6px #c6a77a;
+/* ==================== MOBILE (481px - 600px) ==================== */
+@media (max-width: 600px) {
+  .hero-section {
+    min-height: 60vh;
+  }
+  
+  .hero-slider,
+  .hero-slide {
+    height: 60vh;
+  }
+  
+  .hero-overlay {
+    background: rgba(50, 30, 10, 0.22); /* Lebih gelap untuk kontras lebih baik di mobile */
+  }
 }
 
-.hero-title {
-  font-size: 3rem;
-  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
-  color: #fff;
-  margin-bottom: 18px;
-  letter-spacing: 2px;
-  font-weight: 900;
-  text-shadow: 0 2px 16px #3a2a14ae;
-}
-.hero-subtitle {
-  color: #ffe7ce;
-  font-size: 1.4rem;
-  font-weight: 600;
-  margin-bottom: 36px;
-  text-shadow: 0 1px 12px #522f179c;
-}
-
-.hero-background-dot {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(30px);
-  animation: float 6s ease-in-out infinite;
-  opacity: 0.18;
-  z-index: 0;
-}
-.hero-background-dot1 {
-  top: 25%;
-  left: 25%;
-  width: 80px;
-  height: 80px;
-  background: var(--kopi-main);
-  animation-delay: 0s;
-  opacity: 0.14;
-}
-.hero-background-dot2 {
-  top: 66.6667%;
-  right: 33.3333%;
-  width: 96px;
-  height: 96px;
-  background: var(--kopi-dark);
-  animation-delay: 1s;
-  opacity: 0.10;
-}
-.hero-background-dot3 {
-  bottom: 25%;
-  right: 25%;
-  width: 64px;
-  height: 64px;
-  background: var(--kopi-light);
-  animation-delay: 2s;
-  opacity: 0.12;
-}
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
+/* ==================== SMALL MOBILE (320px - 480px) ==================== */
+@media (max-width: 480px) {
+  .hero-section {
+    min-height: 50vh;
+  }
+  
+  .hero-slider,
+  .hero-slide {
+    height: 50vh;
+  }
+  
+  .hero-overlay {
+    background: rgba(50, 30, 10, 0.25); /* Paling gelap di small mobile */
+  }
 }
 
-.hero-content {
-  position: relative;
-  z-index: 10;
-  max-width: 64rem;
-  padding: 0 12px;
+/* ==================== VERY SMALL MOBILE (max-width: 320px) ==================== */
+@media (max-width: 320px) {
+  .hero-section {
+    min-height: 45vh;
+  }
+  
+  .hero-slider,
+  .hero-slide {
+    height: 45vh;
+  }
 }
 
-.hero-title {
-  font-size: 2.25rem;
-  font-weight: 700;
-  margin-bottom: 24px;
-  font-family: 'Helvetica', sans-serif;
-  background: linear-gradient(90deg, var(--kopi-main), var(--kopi-light));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* ==================== LANDSCAPE MOBILE ==================== */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero-section {
+    min-height: 100vh; /* Pertahankan full height di landscape */
+  }
+  
+  .hero-slider,
+  .hero-slide {
+    height: 100vh;
+  }
+  
+  .hero-overlay {
+    background: rgba(50, 30, 10, 0.2);
+  }
 }
 
-.hero-subtitle {
-  font-size: 1.25rem;
-  font-weight: 300;
-  margin-bottom: 32px;
-  color: var(--kopi-light);
+/* ==================== HIGH RESOLUTION DISPLAY ==================== */
+@media (min-width: 1400px) {
+  .hero-section {
+    min-height: 100vh;
+  }
+  
+  .hero-slider,
+  .hero-slide {
+    height: 100vh;
+  }
 }
-
-.buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  justify-content: center;
-}
-
-.button-primary {
-  font-family: 'Helvetica', sans-serif;
-  padding: 12px 32px;
-  background: linear-gradient(90deg, var(--kopi-main), var(--kopi-light));
-  color: var(--kopi-white);
-  font-weight: 500;
-  border-radius: 9999px;
-  cursor: pointer;
-  text-align: center;
-  box-shadow: 0 10px 15px -3px var(--kopi-shadow);
-  transition: opacity 0.2s, color 0.2s, background 0.2s;
-  text-decoration: none;
-  border: none;
-}
-.button-primary:hover {
-  font-family: 'Helvetica', sans-serif;
-  opacity: 0.93;
-  color: var(--kopi-main);
-  background: var(--kopi-white);
-  outline: 1px solid var(--kopi-main);
-}
-
-.button-secondary {
-  padding: 12px 32px;
-  background: transparent;
-  border: 2px solid var(--kopi-main);
-  color: var(--kopi-main);
-  font-weight: 500;
-  border-radius: 9999px;
-  cursor: pointer;
-  text-align: center;
-  transition: background 0.2s, color 0.2s;
-  text-decoration: none;
-}
-.button-secondary:hover {
-  background: var(--kopi-main);
-  color: var(--kopi-white);
-}
-
-.scroll-indicator {
-  color: var(--kopi-light);
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: bounce 2s infinite;
-}
-.scroll-indicator svg {
-  width: 32px;
-  height: 32px;
-  color: var(--kopi-light);
-  cursor: pointer;
-}
-.scroll-indicator svg:hover {
-  color: white;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(-12px);}
-}
-
-
-@media (min-width: 768px) {
-  .buttons { flex-direction: row; }
-}
-
-

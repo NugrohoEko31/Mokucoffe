@@ -62,7 +62,7 @@ const LoginPage = () => {
           <label
             htmlFor="email"
             style={{
-              fontFamily: 'Montserrat, Helvetica, sans-serif',
+              fontFamily: 'Plus Jakarta Sans, sans-serif',
               fontWeight: 600,
               fontSize: 18,
               color: 'var(--kopi-text)',
@@ -88,7 +88,7 @@ const LoginPage = () => {
               color: 'var(--kopi-text)',
               marginBottom: errors.email ? 3 : 13,
               outline: 'none',
-              fontFamily: 'Montserrat, Helvetica, sans-serif',
+              fontFamily: 'Plus Jakarta Sans, sans-serif',
             }}
           />
           {errors.email && <div style={{ color: '#b51c1c', fontSize: 15 }}>{errors.email}</div>}
@@ -96,7 +96,7 @@ const LoginPage = () => {
           <label
             htmlFor="password"
             style={{
-              fontFamily: 'Montserrat, Helvetica, sans-serif',
+              fontFamily: 'Plus Jakarta Sans, sans-serif',
               fontWeight: 600,
               fontSize: 18,
               color: 'var(--kopi-text)',
@@ -124,7 +124,7 @@ const LoginPage = () => {
                 color: 'var(--kopi-text)',
                 marginBottom: errors.password ? 3 : 13,
                 outline: 'none',
-                fontFamily: 'Montserrat, Helvetica, sans-serif',
+                fontFamily: 'Plus Jakarta Sans, sans-serif',
               }}
             />
             <button

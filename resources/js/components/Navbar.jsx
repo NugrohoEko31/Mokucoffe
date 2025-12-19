@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import logo from '../assets/LOGOMOKU.png';
+import logo from '../assets/LOGOPUTIH.jpg';
 import './Navbar.css';
 
 const headerNavBar = [
-    { title: 'Tentang Kami', href: '/' },
+    { title: 'Beranda', href: '/' },
+    { title: 'Tentang Kami', href: '/#aboutus' },
     { title: 'Menu', href: '/#menu' },
     { title: 'Lokasi', href: '/#location' },
     { title: 'Kontak', href: '/#footer' },
@@ -28,26 +29,32 @@ const smoothScrollToId = (id) => {
 };
 
 
+const [activeLink, setActiveLink] = useState(window.location.hash || '/');
+
 const handleAnchorClick = (e, href) => {
     e.preventDefault();
     const hashIndex = href.indexOf('#');
+    let linkKey = href;
 
     if (hashIndex !== -1) {
-        const path = href.substring(0, hashIndex);
-        const id = href.substring(hashIndex + 1);
+    const path = href.substring(0, hashIndex);
+    const id = href.substring(hashIndex + 1);
+
+    // Update active link state
+    linkKey = '#' + id;
+    setActiveLink(linkKey);
 
     if (
         window.location.pathname === path ||
         (path === '/' && (window.location.pathname === '/' || window.location.pathname === '/home'))
-    ) {
-        // Gunakan pushState agar tidak trigger scroll default browser
+        ) {
         window.history.pushState(null, '', '#' + id);
-        smoothScrollToId(id); // Manual smooth scroll
-    } else {
-        // Redirect ke home+hash, scroll nanti di home via useEffect
+        smoothScrollToId(id);
+        } else {
         window.location.href = path + '#' + id;
-    }
+        }
     } else {
+        setActiveLink(href);
         window.location.href = href;
     }
     setMobileMenuOpen(false);
@@ -73,7 +80,7 @@ const handleLogoClick = (e) => {
                 <a
                 key={item.title}
                 href={item.href}
-                className="nav-link"
+                className={`nav-link${activeLink === item.href || activeLink === item.href.replace(/.*#/, '#') ? ' active' : ''}`}
                 onClick={(e) => handleAnchorClick(e, item.href)}
                 >
                 {item.title}
@@ -91,14 +98,14 @@ const handleLogoClick = (e) => {
         {mobileMenuOpen && (
             <div className="mobile-menu open">
             {headerNavBar.map((item) => (
-                <a
+            <a
                 key={item.title}
                 href={item.href}
-                className="mobile-nav-link"
+                className={`mobile-nav-link${activeLink === item.href || activeLink === item.href.replace(/.*#/, '#') ? ' active' : ''}`}
                 onClick={(e) => handleAnchorClick(e, item.href)}
-                >
+            >
                 {item.title}
-                </a>
+            </a>
             ))}
             </div>
         )}

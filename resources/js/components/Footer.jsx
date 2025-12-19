@@ -1,5 +1,6 @@
 import React from 'react';
 import './Footer.css';
+import logo from '../assets/LOGOPUTIH.jpg';
 
 const Footer = () => (
   <footer id="footer" className="footer">
@@ -14,7 +15,7 @@ const Footer = () => (
       <div className="footer-column">
         <h3 className="footer-column-title">Kontak</h3>
         <div className="footer-col-text">
-          <div>0989 2232 xxxx</div>
+          <div>+6258 4902 8119</div>
           <div style={{ marginTop: 8 }}>mokuc​offe.gmail.con</div>
         </div>
       </div>
@@ -31,7 +32,11 @@ const Footer = () => (
           </div>
         </div>
       </div>
+      <div className="footer-logo-kanan">
+        <img src={logo} alt="Logo Moku" />
+      </div>
     </div>
   </footer>
 );
+
 export default Footer;

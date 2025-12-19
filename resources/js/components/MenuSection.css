@@ -20,7 +20,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  gap: 80px; /* besar, biar judul & card pisah */
+  gap: 190px;
 }
 
 .menu-header-left {
@@ -39,7 +39,7 @@
   font-weight: 800;
   color: #222;
   margin-bottom: 1px;
-  font-family: 'Montserrat', 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .menu-header-desc {
@@ -47,7 +47,7 @@
   color: #6A5C48;
   margin-bottom: 0;
   margin-top: 8px;
-  font-family: 'Montserrat', 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .menu-list-right {
@@ -61,10 +61,11 @@
 
 .menu-list {
   width: 100%;
-  display: flex;
-  gap: 32px;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0px;
+  justify-content: right;
+  align-items: stretch;
   margin-bottom: 0;
   min-width: 0;
 }
@@ -106,14 +107,14 @@
 }
 
 .menu-item-title {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
   font-size: 1.4rem;
   color: #3d2d19;
 }
 
 .menu-item-desc {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1rem;
   color: #725a40;
   margin-bottom: 15px;
@@ -124,7 +125,7 @@
   color: #fff;
   border-radius: 0 0 14px 14px;
   font-size: 1.09rem;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
   width: 100%;
   text-align: center;
@@ -138,7 +139,7 @@
 
 .menu-star {
   color: #FECD31;
-  font-size: 1.8em;    /* sedikit lebih besar dari text */
+  font-size: 1.8em;
   margin-left: 4px;
   font-family: inherit;
   vertical-align: middle;
@@ -160,13 +161,14 @@
   padding: 12px 30px;
   border-radius: 20px;
   font-size: 1.01rem;
-  font-family: 'Montserrat', 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 500;
   letter-spacing: 0.01em;
   cursor: pointer;
   box-shadow: 0 2px 10px #5837172b;
   transition: background 0.18s, color 0.18s;
 }
+
 .lihat-semua-btn:hover, .lihat-semua-btn:focus {
   background: #80633c;
   color: #ffeac7;
@@ -183,12 +185,13 @@
   position: relative;
 }
 
-.menu-header-title {
-  font-size: 3rem;
+.menu-header-title-all {
+  margin-top: 30px;
+  font-size: 4rem;
   font-weight: 800;
   color: #222;
-  margin-bottom: 24px;
-  font-family: 'Montserrat', 'Inter', sans-serif;
+  margin-bottom: 20px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   text-align: center;
 }
 
@@ -202,36 +205,311 @@
   align-items: stretch;
 }
 
-/* Responsive */
-@media (max-width: 950px) {
+/* ==================== TABLET RESPONSIVE (769px - 1024px) ==================== */
+@media (max-width: 1024px) {
   .menu-content-wrapper {
-    flex-direction: column;
-    gap: 26px;
+    gap: 100px;
   }
-  .menu-header-left {
-    margin: 0 0 13px 0;
-    align-items: flex-start;
-    width: 100%;
+  
+  .menu-header-title {
+    font-size: 3.2rem;
   }
+  
+  .menu-header-desc {
+    font-size: 1.5rem;
+  }
+  
   .menu-list {
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
+    justify-content: center;
   }
-  .menu-list-right {
-    align-items: stretch;
-    width: 100%;
+  
+  .menu-item-card {
+    width: 220px;
+    min-height: 300px;
+  }
+  
+  .menu-photo {
+    width: 140px;
+    height: 140px;
+    margin: 20px 0 16px 0;
+  }
+  
+  .menu-item-title {
+    font-size: 1.3rem;
+  }
+  
+  .menu-item-desc {
+    font-size: 0.95rem;
+  }
+  
+  .lihat-semua-btn-wrapper {
+    padding-right: 20px;
+  }
+  
+  .menu-header-title-all {
+    font-size: 3.2rem;
   }
 }
 
-@media (max-width: 700px) {
-  .menu-list {
+/* ==================== SMALL TABLET (601px - 768px) ==================== */
+@media (max-width: 768px) {
+  .menu-section {
+    min-height: auto;
+    padding: 40px 0;
+  }
+  
+  .menu-content-wrapper {
     flex-direction: column;
+    gap: 40px;
+  }
+  
+  .menu-header-left {
+    margin: 0;
     align-items: center;
+    max-width: 100%;
+  }
+  
+  .menu-header-title {
+    font-size: 2.8rem;
+    margin-bottom: 8px;
+  }
+  
+  .menu-header-desc {
+    font-size: 1.3rem;
+    margin-top: 4px;
+  }
+  
+  .menu-list {
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
+    justify-content: center;
   }
+  
   .menu-item-card {
-    width: 88vw;
+    width: 200px;
+    min-height: 280px;
   }
+  
+  .menu-photo {
+    width: 120px;
+    height: 120px;
+    margin: 18px 0 14px 0;
+  }
+  
+  .menu-item-title {
+    font-size: 1.2rem;
+  }
+  
+  .menu-item-desc {
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+  }
+  
+  .menu-item-price {
+    font-size: 1rem;
+    padding: 8px 0;
+  }
+  
   .lihat-semua-btn-wrapper {
     justify-content: center;
+    padding-right: 0;
+    margin-top: 25px;
+  }
+  
+  .menu-section-all {
+    padding: 40px 0 20px 0;
+  }
+  
+  .menu-header-title-all {
+    font-size: 2.8rem;
+    margin-top: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .menu-list-all {
+    gap: 20px;
+  }
+}
+
+/* ==================== MOBILE (481px - 600px) ==================== */
+@media (max-width: 600px) {
+  .menu-header-title {
+    font-size: 2.4rem;
+  }
+  
+  .menu-header-desc {
+    font-size: 1.1rem;
+  }
+  
+  .menu-list {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .menu-item-card {
+    width: 280px;
+    min-height: 260px;
+  }
+  
+  .menu-photo {
+    width: 110px;
+    height: 110px;
+    margin: 16px 0 12px 0;
+  }
+  
+  .menu-item-title {
+    font-size: 1.1rem;
+  }
+  
+  .menu-item-desc {
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+  }
+  
+  .menu-item-price {
+    font-size: 0.95rem;
+    padding: 8px 0;
+  }
+  
+  .lihat-semua-btn {
+    padding: 10px 25px;
+    font-size: 0.95rem;
+  }
+  
+  .menu-header-title-all {
+    font-size: 2.4rem;
+  }
+}
+
+/* ==================== SMALL MOBILE (320px - 480px) ==================== */
+@media (max-width: 480px) {
+  .menu-section {
+    padding: 30px 0;
+  }
+  
+  .menu-content-wrapper {
+    gap: 30px;
+  }
+  
+  .menu-header-title {
+    font-size: 2rem;
+  }
+  
+  .menu-header-desc {
+    font-size: 1rem;
+  }
+  
+  .menu-item-card {
+    width: 85vw;
+    min-height: 240px;
+  }
+  
+  .menu-photo {
+    width: 100px;
+    height: 100px;
+    margin: 14px 0 10px 0;
+  }
+  
+  .menu-item-title {
+    font-size: 1rem;
+  }
+  
+  .menu-item-desc {
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+  }
+  
+  .menu-item-price {
+    font-size: 0.9rem;
+    padding: 7px 0;
+  }
+  
+  .menu-star {
+    font-size: 1.5em;
+  }
+  
+  .lihat-semua-btn {
+    padding: 9px 22px;
+    font-size: 0.9rem;
+  }
+  
+  .menu-section-all {
+    padding: 30px 0 15px 0;
+  }
+  
+  .menu-header-title-all {
+    font-size: 2rem;
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+  
+  .menu-list-all {
+    gap: 16px;
+  }
+}
+
+/* ==================== VERY SMALL MOBILE (max-width: 320px) ==================== */
+@media (max-width: 320px) {
+  .menu-header-title {
+    font-size: 1.8rem;
+  }
+  
+  .menu-header-desc {
+    font-size: 0.9rem;
+  }
+  
+  .menu-item-card {
+    width: 90vw;
+    min-height: 220px;
+  }
+  
+  .menu-photo {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .menu-item-title {
+    font-size: 0.95rem;
+  }
+  
+  .menu-item-desc {
+    font-size: 0.75rem;
+  }
+  
+  .menu-header-title-all {
+    font-size: 1.8rem;
+  }
+}
+
+/* ==================== LANDSCAPE MOBILE ==================== */
+@media (max-height: 500px) and (orientation: landscape) {
+  .menu-section {
+    min-height: auto;
+    padding: 30px 0;
+  }
+  
+  .menu-content-wrapper {
+    gap: 30px;
+  }
+  
+  .menu-item-card {
+    min-height: 200px;
+  }
+  
+  .menu-photo {
+    width: 80px;
+    height: 80px;
+    margin: 12px 0 8px 0;
+  }
+  
+  .menu-item-title {
+    font-size: 1rem;
+  }
+  
+  .menu-item-desc {
+    font-size: 0.8rem;
+    margin-bottom: 6px;
   }
 }

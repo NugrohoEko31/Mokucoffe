@@ -31,7 +31,7 @@ const LocationSection = () => {
       >
       <div className="location-container">
         <h2 className="location-title">Lokasi Kami</h2>
-        <p className="location-desc">Ingin berkunjung ke toko fisik langsung? Lihat panduan lokasi berikut atau kontak kami untuk memastikan ketersediaan produk incaran Anda.</p>
+        <p className="location-desc">Untuk Anda yang ingin menikmati cafe secara langsung, panduan lokasi tersedia agar Anda dapat menemukan kami dengan lebih mudah</p>
         <div className="location-content-flex">
           <div
             className="location-map-card"
